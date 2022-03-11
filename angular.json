@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "2fcfc0c3-7099-49dc-80a2-bc7b0a1e8411"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -74,7 +77,10 @@
               "browserTarget": "PumaPoC:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "src/proxy.conf.js"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",

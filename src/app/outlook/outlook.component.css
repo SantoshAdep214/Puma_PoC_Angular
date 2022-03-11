@@ -1,0 +1,300 @@
+.panel {
+  border: 1px solid #f8f5f4;
+  transition: box-shadow 0.5s;
+  /*changes*/
+  border: 1px solid #d3d3d3;
+  border-radius: 7px;
+  box-shadow: 0 5px 15px #bdbaba;
+  cursor: pointer;
+  border-radius: 22px;
+}
+
+/*.workdaycolor {
+  border-left: 12px solid red;
+}*/
+
+.outlookcolor {
+  border-left: 12px solid #1562FB;
+}
+
+/*.adobecolor {
+  border-left: 12px solid violet;
+}
+
+.sapcolor {
+  border-left: 12px solid green;
+}
+
+.opentextcolor {
+  border-left: 12px solid #4A564C;
+}*/
+
+.panel:hover {
+  box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+
+.search {
+  color: violet;
+  border: 1px solid black;
+}
+
+  .search:hover {
+    color: grey;
+    box-shadow: 0 5px 15px violet;
+  }
+
+.panel-footer .btn:hover {
+  border: 1px solid #ece7e5;
+  background-color: #fff !important;
+  color: #f3ebe9;
+}
+
+.panel h4 {
+  font-size: 17px;
+}
+
+.panel p {
+  font-size: 12px;
+  color: grey;
+  font-weight: bold;
+}
+
+.panel-heading {
+  color: rgb(27, 7, 7) !important;
+  background-color: #ffffff !important;
+  padding: 25px;
+  text-align: left;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  height: 10px;
+  border-radius: 20px;
+}
+
+.panel-footer {
+  background-color: #fff !important;
+}
+
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+
+  .panel-footer h4 {
+    color: rgb(15, 14, 14);
+    font-size: 14px;
+  }
+
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #fffffff1;
+    color: #fff;
+  }
+
+
+.HeaderContainer {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  --antd-wave-shadow-color: #1890ff;
+  --scroll-bar: 0;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum","tnum";
+  color: rgba(0,0,0,.85);
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  box-sizing: border-box;
+  align-items: center;
+  background: #fff;
+  display: flex;
+  height: 8rem;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 11rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: auto;
+  /* height:200px;*/
+}
+
+/*#displaystyle {
+  position: relative;
+  width: 900px;
+  height: 10px;
+  border:dashed;
+}*/
+.container-fluid {
+  position: relative;
+  width: 1050px;
+ 
+}
+
+p {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.right {
+  /* margin-left:470px;*/
+
+  margin-right: 200px;
+}
+
+.Introduction {
+  align-items: center;
+  display: flex;
+  justify-content: right;
+}
+
+
+
+.panel button {
+  height: 30px;
+  margin-top: 40px;
+}
+
+.reset {
+  /* margin-left:470px;*/
+
+  margin-right: 200px;
+}
+button {
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 12px;
+  background-color: lightgrey;
+}
+
+.buttonright {
+  position: relative;
+  right: 60px;
+}
+
+.btn-top {
+  margin-top: 20px;
+}
+.container {
+  margin-top: 25px;
+}
+
+
+/*calender*/
+ejs-calendar {
+  border-radius: 10px;
+  border: 1px solid red;
+}
+
+
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+li {
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+b { /* used for event dates/times */
+  margin-right: 3px;
+}
+
+.demo-app {
+  display: flex;
+  min-height: 100%;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.demo-app-sidebar {
+  width: 500px;
+  line-height: 1.5;
+  background: #eaf9ff;
+  border-right: 1px solid #d3e2e8;
+}
+
+.demo-app-sidebar-section {
+  padding: 2em;
+}
+
+.demo-app-main {
+  flex-grow: 1;
+  padding: 3em;
+}
+
+.fc { /* the calendar root */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+full-calendar {
+  width: 865px;
+  top: -80px;
+  border-radius: 15px;
+  height: 500px;
+  position: relative;
+  right: 78px;
+}
+
+.currentdate {
+  position: relative;
+  top: -120px;
+}
+
+/*due date css*/
+.details {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -30px;
+  margin-right: 15px;
+}
+
+.date {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: -1px;
+  font-weight: bold;
+}
+
+.dueDays {
+  color: #f90;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.dueDuration {
+  font-size: 14px;
+  font-weight: 600;
+}
+.datecolor{
+    font-size:12px;
+    font-weight:bold;
+}
+.title {
+  color: rgb(15, 14, 14);
+  font-size: 17px;
+  font-weight: 500;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.name {
+  font-size: 13px;
+  color: grey;
+  font-weight: bold;
+  position: relative;
+  top: 0px;
+  left: 25px;
+}

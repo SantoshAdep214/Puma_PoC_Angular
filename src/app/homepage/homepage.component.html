@@ -1,0 +1,211 @@
+
+
+
+<div class="HeaderContainer">
+  <div>
+    <img src="../../assets/Image/puma.jpeg" class="App-logo" alt="logo" (click)="pumahome()" height="100cm" width="150cm">
+  </div>
+
+  <div class="Introduction">
+    <div class="Name">
+      <div>
+        <span class="HomePageTitle"><strong>Hello</strong></span>
+      </div>
+      <div>
+        <span class="HomePageTitle"><strong>Max Mustermann</strong> </span>
+      </div>
+
+    </div>
+    <div>
+      <img src="../../assets/Image/man.jpg" class="rounded-circle" alt="logo" height="95cm" width="90cm">
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+
+<div class="con container">
+  <div class="container text-center" style="margin-top:130px;">
+    <h1>You've got 7 tasks to complete</h1>
+    <br>
+    <button type="button" class="btn btn-secondary" (click)="btnClick()" style="border-radius:10px;">Show me all my tasks</button>
+    <br>
+    <br>
+    <h6>Or choose specific source:</h6>
+    <h6>( You can change that later in source filter )</h6>
+  </div>
+
+
+
+
+
+
+  <div class="card-columns">
+    <div class="card">
+      <div class="card-body text-center" (click)="Workday()">
+
+        <img src="../../assets/Image/workday.png"
+             class="rounded-circle float-left " alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
+
+
+        <div *ngFor="let w of workday">
+          <h5 class="card-title">{{w.source}} </h5>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted">1 task</h6>
+        <div class="NotificationCount">1</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class=" card-body text-center" (click)="Opentext()">
+
+        <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
+
+        <div *ngFor="let o of opentext">
+          <h5 class="card-title">{{o.source}} </h5>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted">1 task</h6>
+
+        <div class="NotificationCount">1</div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="card-body text-center" (click)="Adobesign()">
+        <img src="../../assets/Image/adobesign.png"
+             class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
+
+        <div *ngFor="let a of adobe">
+          <h5 class="card-title">{{a.source}} </h5>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted">2 tasks</h6>
+        <div class="NotificationCount">2</div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body text-center">
+        <img src="../../assets/Image/todo.png"
+             class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
+
+        <h5 class="card-title">TO-DO</h5>
+
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-left: 20px;">0 tasks</h6>
+
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-body text-center" (click)="SAPConcur()">
+        <img src="https://d2c0jhkf0fswap.cloudfront.net/static/media/sap-concur.6ba72968d799304a5b83d8fceab34011.svg"
+             class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
+
+        <div *ngFor="let s of sapconcur">
+          <h5 class="card-title">{{s.source}} </h5>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted">1 task</h6>
+        <div class="NotificationCount">1</div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-body text-center" (click)="Outlook()">
+        <img src="../../assets/Image/outlook.png"
+             class="float-left" alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
+
+        <div *ngFor="let o of outlook">
+          <h5 class="card-title">{{o.source}} </h5>
+        </div>
+
+        <h6 class="card-subtitle mb-2 text-muted" style="margin-left: 20px;">2 tasks</h6>
+        <div class="NotificationCount">2</div>
+      </div>
+    </div>
+  </div>
+
+
+  <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--  https://stackoverflow.com/questions/1853662/how-to-show-page-loading-div-until-the-page-has-finished-loading
+
+    https://loading.io/css/ --for spinners
+
+  <p *ngIf="!display"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+
+
+
+  <table *ngIf="display">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Due</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of display">
+        <td>{{ d.id }}</td>
+        <td>{{ d.name }}</td>
+        <td>{{ d.title }}</td>
+        <td>{{ d.due }}</td>
+      </tr>
+    </tbody>
+  </table>-->
+  <!--<div class="container">
+
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="top">-->
+  <!--<img _ngcontent-scx-c54="" src="../../../assets/image/pumalogo2.jpg" alt="puma" width="400" height="200"> class="App-logo" -->
+  <!--<img src="https://d2c0jhkf0fswap.cloudfront.net/static/media/logo.df9e46058fe72ddc0765.jpeg" class="App-logo" alt="logo" height="100cm" width="150cm">
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-6">
+
+
+        <div class="aligned">
+          <div class="text-right">
+            <span class="HomePageTitle"> Hello</span>
+            <br><br>
+          </div>
+
+          <div>
+
+
+            <span class="HomePageTitle">Max Mustermann</span>
+          </div>
+          <img src="https://d2c0jhkf0fswap.cloudfront.net/static/media/profile-pic.08e86fdf2c6c9ffcf960.jpg" class="rounded-circle float-right" alt="Image" height="95cm" width="90cm">
+        </div>
+      </div>
+    </div>
+  </div>-->
