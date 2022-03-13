@@ -10,23 +10,19 @@
 }
 
 .workdaycolor {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.workdaycolor1{
   border-left: 12px solid red;
 }
 
-.outlookcolor {
-  border-left: 12px solid #1562FB;
+.workdaycolor2 {
+  border-left: 12px solid orange;
 }
 
-.adobecolor {
-  border-left: 12px solid violet;
-}
-
-.sapcolor {
-  border-left: 12px solid green;
-}
-
-.opentextcolor {
-  border-left: 12px solid #4A564C;
+.workdaycolor3 {
+  border-left: 12px solid limegreen;
 }
 
 .panel:hover {
@@ -304,4 +300,29 @@ full-calendar {
   position: relative;
   top: 0px;
   left: 25px;
+}
+
+
+.datecolor1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(0,77,77);
+}
+
+.datecolor2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
+}
+
+.datecolor3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: orange;
+}
+.datecolor4{
+  font-size: 13px;
+  font-weight: 500;
+  color: limegreen;
+  
 }

@@ -12,7 +12,7 @@
 
 
 .sapcolor {
-  border-left: 12px solid green;
+  border-left: 12px solid rgb(0,77,77);
 }
 
 .sapcolor1 {
@@ -21,6 +21,9 @@
 
 .sapcolor2 {
   border-left: 12px solid orange;
+}
+.sapcolor3{
+    border-left:12px solid limegreen;
 }
 
 .panel:hover {
@@ -206,23 +209,27 @@ button {
   font-weight: 600;
 }
 
-.datecolor1,.sapcolor {
+.datecolor1 {
   font-size: 13px;
   font-weight: 500;
-  color: green;
-  
+  color: rgb(0,77,77);
 }
-.datecolor2,.sapcolor {
+.datecolor2{
   font-size: 13px;
   font-weight: 500;
   color: red;
 
 }
-.datecolor3, .sapcolor{
+.datecolor3{
   font-size: 13px;
   font-weight: 500;
   color: orange;
  
+}
+.datecolor4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: limegreen;
 }
 /*
 .border1 {
@@ -363,14 +370,15 @@ full-calendar{
   top: 0px;
   left: 25px;
 }
-.greenClass {
+/*.greenClass {
   color: green;
  
 }
+*/
 
+/*
 .redClass {
   color: red;
-
 }
 
 .green1Class {
@@ -382,3 +390,4 @@ full-calendar{
 
   border-left: 12px solid red;
 }
+*/

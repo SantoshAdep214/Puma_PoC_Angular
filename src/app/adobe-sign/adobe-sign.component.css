@@ -9,25 +9,46 @@
   border-radius: 22px;
 }
 
-.workdaycolor {
+
+
+.adobecolor1 {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.adobecolor2 {
   border-left: 12px solid red;
 }
 
-.outlookcolor {
-  border-left: 12px solid #1562FB;
+.adobecolor3 {
+  border-left: 12px solid orange;
+}
+.adobecolor4 {
+  border-left: 12px solid limegreen;
 }
 
-.adobecolor {
-  border-left: 12px solid violet;
+.datecolor1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(0,77,77);
 }
 
-.sapcolor {
-  border-left: 12px solid green;
+.datecolor2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
 }
 
-.opentextcolor {
-  border-left: 12px solid #4A564C;
+.datecolor3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: orange;
 }
+.datecolor4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: limegreen;
+}
+
 
 .panel:hover {
   box-shadow: 5px 0px 40px rgba(0,0,0, .2);

@@ -143,5 +143,6 @@ interface Outlook {
   due4: number;
   title: string;
   title2: string;
-  imageUrl: string;    
+  imageUrl: string;
+  resolved: boolean;   
 }

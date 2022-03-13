@@ -25,9 +25,46 @@
   border-left: 12px solid green;
 }*/
 
-.opentextcolor {
-  border-left: 12px solid #4A564C;
+.opentextcolor1 {
+  border-left: 12px solid rgb(0,77,77);
 }
+
+.opentextcolor2 {
+  border-left: 12px solid red;
+}
+
+.opentextcolor3 {
+  border-left: 12px solid orange;
+}
+
+.opentextcolor4 {
+  border-left: 12px solid limegreen;
+}
+
+.datecolor1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(0,77,77);
+}
+
+.datecolor2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
+}
+
+.datecolor3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: orange;
+}
+
+.datecolor4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: limegreen;
+}
+
 
 .panel:hover {
   box-shadow: 5px 0px 40px rgba(0,0,0, .2);

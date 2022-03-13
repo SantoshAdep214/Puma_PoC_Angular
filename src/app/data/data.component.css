@@ -11,20 +11,88 @@
 }
 
 .workdaycolor {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.workdaycolor1 {
   border-left: 12px solid red;
 }
-.outlookcolor {
-  border-left: 12px solid #1562FB;
+
+.workdaycolor2 {
+  border-left: 12px solid orange;
 }
-.adobecolor {
-  border-left: 12px solid violet;
+
+.workdaycolor3 {
+  border-left: 12px solid limegreen;
 }
+
+
+.adobecolor1 {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.adobecolor2 {
+  border-left: 12px solid red;
+}
+
+.adobecolor3 {
+  border-left: 12px solid orange;
+}
+
+.adobecolor4 {
+  border-left: 12px solid limegreen;
+}
+
+
+.outlookcolor1 {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.outlookcolor2 {
+  border-left: 12px solid red;
+}
+
+.outlookcolor3 {
+  border-left: 12px solid orange;
+}
+
+.outlookcolor4 {
+  border-left: 12px solid limegreen;
+}
+
+
+.opentextcolor1 {
+  border-left: 12px solid rgb(0,77,77);
+}
+
+.opentextcolor2 {
+  border-left: 12px solid red;
+}
+
+.opentextcolor3 {
+  border-left: 12px solid orange;
+}
+
+.opentextcolor4 {
+  border-left: 12px solid limegreen;
+}
+
 .sapcolor {
-  border-left: 12px solid green;
+  border-left: 12px solid rgb(0,77,77);
 }
-.opentextcolor {
-  border-left: 12px solid #4A564C;
+
+.sapcolor1 {
+  border-left: 12px solid red;
 }
+
+.sapcolor2 {
+  border-left: 12px solid orange;
+}
+
+.sapcolor3 {
+  border-left: 12px solid limegreen;
+}
+
   .panel:hover {
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
   }
@@ -348,4 +416,35 @@ full-calendar {
   position: relative;
   top: 0px;
   left: 25px;
+}
+
+
+.datecolor1 {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(0,77,77);
+}
+
+.datecolor2 {
+  font-size: 13px;
+  font-weight: 500;
+  color: red;
+}
+
+.datecolor3 {
+  font-size: 13px;
+  font-weight: 500;
+  color: orange;
+}
+
+.datecolor4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: limegreen;
+}
+
+.sapbtngroup {
+  position: relative;
+  right: 57px;
+ 
 }

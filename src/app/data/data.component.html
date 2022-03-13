@@ -145,55 +145,540 @@
 
     <div class=".container-lg">
 
-      <div class=" workdaycolor panel panel-default text-center" style="height:130px;">
+      <div *ngFor="let w of workday">
+        <ng-container *ngIf="w.due>0 && !w.resolved">
 
-        <div style="padding-top: 10px;" class="panel-heading">
+          <div class=" workdaycolor panel panel-default text-center" style="height:130px;">
 
-          <img src="../../assets/Image/workday.png" class="rounded-circle float-left" alt="logo" height="25cm" width="25cm">
+            <div style="padding-top: 10px;" class="panel-heading">
 
-          <div *ngFor="let w of workday">
-            <div class="title"> &nbsp;{{w.title}}</div>
-          </div>
+              <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <div *ngFor="let w of workday">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </div>
 
-          <div *ngFor="let w of workday">
-            <div class="name"> &nbsp;{{w.name}}</div>
-          </div>
-
-
-        </div>
-
-        <div class="details">
-          <div class="WorkdayDueDays WorkdayDueDuration" *ngFor="let w of workday">Due in {{w.due}} days</div>
-          <div>
-
-            <div *ngFor="let d of workday">
-              <span class="datecolor">{{d.date}}</span>
+              <div *ngFor="let w of workday">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </div>
 
             </div>
-          </div>
+            <div class="details">
+
+              <div *ngFor="let w of workday">
+                <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of workday">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
 
 
-        </div>
 
-
-        <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-            <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
             </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+        </ng-container>
+      </div>
+
+
+
+      <div *ngFor="let w of workday">
+        <ng-container *ngIf="w.due<0 && !w.resolved">
+
+          <div class=" workdaycolor1 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <div *ngFor="let w of workday">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </div>
+
+              <div *ngFor="let w of workday">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of workday">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+
+
+              <div>
+                <div *ngFor="let d of workday">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of workday">
+        <ng-container *ngIf="w.due==0 && !w.resolved">
+
+          <div class=" workdaycolor2 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <div *ngFor="let w of workday">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </div>
+
+              <div *ngFor="let w of workday">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+
+              <div *ngFor="let w of workday">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of workday">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of workday">
+        <ng-container *ngIf="w.due<0 && w.resolved">
+
+          <div class="workdaycolor3 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <div *ngFor="let w of workday">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </div>
+
+              <div *ngFor="let w of workday">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of workday">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{w.due}} ago</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of workday">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+        </ng-container>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div id="displaystyle" class="container-fluid">
+
+    <div class=".container-lg">
+
+
+
+      <div *ngFor="let w of adobe">
+        <ng-container *ngIf="w.due>0 && !w.resolved">
+
+          <div class=" adobecolor1 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobe">
+                <div class="title"> &nbsp;{{a.title}}</div>
+              </div>
+
+              <div *ngFor="let a of adobe">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+
+
+              <!-- <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{w.due}} ago</span>
+                </ng-container>
+              </div>-->
+              <div>
+
+                <div *ngFor="let d of adobe">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
           </div>
 
-          <br><br>
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobe">
+        <ng-container *ngIf="w.due<0 && !w.resolved">
+
+          <div class=" adobecolor2 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobe">
+                <div class="title"> &nbsp;{{a.title}}</div>
+              </div>
+
+              <div *ngFor="let a of adobe">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+
+                <div *ngFor="let d of adobe">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
 
 
-        </div>
 
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobe">
+        <ng-container *ngIf="w.due==0 && !w.resolved">
+
+          <div class=" adobecolor3 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobe">
+                <div class="title"> &nbsp;{{a.title}}</div>
+              </div>
+
+              <div *ngFor="let a of adobe">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+
+              <div>
+
+                <div *ngFor="let d of adobe">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobe">
+        <ng-container *ngIf="w.due<0 && w.resolved">
+
+          <div class=" adobecolor4 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobe">
+                <div class="title"> &nbsp;{{a.title}}</div>
+              </div>
+
+              <div *ngFor="let a of adobe">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobe">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                </ng-container>
+              </div>
+              <div>
+
+                <div *ngFor="let d of adobe">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
       </div>
 
     </div>
@@ -206,54 +691,1065 @@
 
     <div class=".container-lg">
 
-      <div class=" adobecolor panel panel-default text-center" style="height:130px;">
+      <div *ngFor="let w of outlook">
+        <ng-container *ngIf="w.due>0 && !w.resolved">
 
-        <div style="padding-top: 10px;" class="panel-heading">
+          <div class=" outlookcolor1 panel panel-default text-center" style="height:130px;">
 
-          <img src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+            <div style="padding-top: 10px;" class="panel-heading">
 
-          <div *ngFor="let a of adobe">
-            <div class="title"> &nbsp;{{a.title}}</div>
-          </div>
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-          <div *ngFor="let a of adobe">
-            <div class="name"> &nbsp;{{a.name}}</div>
-          </div>
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlook">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
 
-        </div>
-
-        <div class="details">
-          <div class="adobedueDays adobedueDuration" *ngFor="let a of adobe">Overdue by {{a.due}} days</div>
-          <div>
-            <div *ngFor="let a of adobe">
-              <span class="datecolor">{{a.date}}</span>
+              <div *ngFor="let o of outlook">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
 
             </div>
-          </div>
+
+            <div class="details">
+
+              <div *ngFor="let w of outlook">
+                <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of outlook">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
 
 
-        </div>
 
-
-        <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-               <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-            <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
             </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
           </div>
 
-          <br><br>
-
-
-        </div>
-
+        </ng-container>
       </div>
+
+      <div *ngFor="let w of outlook">
+        <ng-container *ngIf="w.due<0 && !w.resolved">
+
+          <div class=" outlookcolor2 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlook">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of outlook">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+
+            <div class="details">
+
+              <div *ngFor="let w of outlook">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">overdue by {{-w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of outlook">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of outlook">
+        <ng-container *ngIf="w.due==0 && !w.resolved">
+
+          <div class=" outlookcolor3 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlook">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of outlook">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+
+            <div class="details">
+
+              <div *ngFor="let w of outlook">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due today</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of outlook">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of outlook">
+        <ng-container *ngIf="w.due<0 && w.resolved">
+
+          <div class=" outlookcolor4 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlook">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of outlook">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+
+            <div class="details">
+
+              <div *ngFor="let w of outlook">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let d of outlook">
+                  <span class="datecolor">{{d.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+    </div>
+
+  </div>
+  <br />
+
+
+
+  <div id="displaystyle" class="container-fluid">
+
+    <div class=".container-lg">
+      <!-- [ngClass]="{green1Class: s.resolved, red1Class: !s.resolved}"-->
+
+      <div *ngFor="let w of sapconcur">
+        <ng-container *ngIf="w.due>0 && !w.resolved">
+
+
+          <div class="sapcolor panel panel-default text-center" *ngFor="let s of sapconcur"
+               style=" height: 130px;">
+
+
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let s of sapconcur" src="../../assets/Image/sapconcur.svg" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let s of sapconcur">
+                <div class="title"> &nbsp;{{s.title}}</div>
+              </div>
+
+              <div *ngFor="let s of sapconcur">
+                <div class="name"> &nbsp;{{s.name}}</div>
+              </div>
+
+
+            </div>
+
+            <!-- <div class="dueDays dueDuration"  [ngClass]="{greenClass: s.resolved, redClass: !s.resolved}">Due Today</div>-->
+            <div class="details">
+
+              <div *ngFor="let w of sapconcur">
+                <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let s of sapconcur">
+                  <span class="datecolor">{{s.date}}</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="panel-body" style="position:relative; top:-30px;">
+
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <div class="btngroup btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+            </div>
+          </div>
+
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of sapconcur">
+        <ng-container *ngIf="w.due<0 && !w.resolved">
+
+
+          <div class="sapcolor1 panel panel-default text-center" *ngFor="let s of sapconcur"
+               style=" height: 130px;">
+
+
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let s of sapconcur" src="../../assets/Image/sapconcur.svg" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let s of sapconcur">
+                <div class="title"> &nbsp;{{s.title}}</div>
+              </div>
+
+              <div *ngFor="let s of sapconcur">
+                <div class="name"> &nbsp;{{s.name}}</div>
+              </div>
+
+
+            </div>
+
+            <!-- <div class="dueDays dueDuration"  [ngClass]="{greenClass: s.resolved, redClass: !s.resolved}">Due Today</div>-->
+            <div class="details">
+
+              <div *ngFor="let w of sapconcur">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let s of sapconcur">
+                  <span class="datecolor">{{s.date}}</span>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="panel-body" style="position:relative; top:-30px;">
+
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+
+                <div class="btngroup btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+            </div>
+          </div>
+
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of sapconcur">
+        <ng-container *ngIf="w.due==0 && !w.resolved">
+
+
+          <div class="sapcolor2 panel panel-default text-center" *ngFor="let s of sapconcur"
+               style=" height: 130px;">
+
+
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let s of sapconcur" src="../../assets/Image/sapconcur.svg" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let s of sapconcur">
+                <div class="title"> &nbsp;{{s.title}}</div>
+              </div>
+
+              <div *ngFor="let s of sapconcur">
+                <div class="name"> &nbsp;{{s.name}}</div>
+              </div>
+            </div>
+
+            <div class="details">
+
+              <div *ngFor="let w of sapconcur">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let s of sapconcur">
+                  <span class="datecolor">{{s.date}}</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="panel-body" style="position:relative; top:-30px;">
+
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+
+                <div class="sapbtngroup btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+            </div>
+          </div>
+
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of sapconcur">
+        <ng-container *ngIf="w.due<0 && w.resolved">
+
+
+          <div class="sapcolor3 panel panel-default text-center" *ngFor="let s of sapconcur"
+               style=" height: 130px;">
+
+
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let s of sapconcur" src="../../assets/Image/sapconcur.svg" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let s of sapconcur">
+                <div class="title"> &nbsp;{{s.title}}</div>
+              </div>
+
+              <div *ngFor="let s of sapconcur">
+                <div class="name"> &nbsp;{{s.name}}</div>
+              </div>
+
+
+            </div>
+
+            <!-- <div class="dueDays dueDuration"  [ngClass]="{greenClass: s.resolved, redClass: !s.resolved}">Due Today</div>-->
+            <div class="details">
+
+              <div *ngFor="let w of sapconcur">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{w.due}} days ago</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let s of sapconcur">
+                  <span class="datecolor">{{s.date}}</span>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="panel-body" style="position:relative; top:-30px;">
+
+              <div class="sap-btn btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+
+                <div class="sapbtngroup btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+            </div>
+          </div>
+
+
+        </ng-container>
+      </div>
+
+    </div>
+
+  </div>
+  <br />
+
+
+
+  <div id="displaystyle" class="container-fluid">
+
+    <div class=".container-lg">
+
+      <div *ngFor="let w of opentext">
+        <ng-container *ngIf="w.due>0 && !w.resolved">
+
+          <div class=" opentextcolor1 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of opentext">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of opentext">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of opentext">
+                <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
+              </div>
+
+
+
+              <div>
+                <div *ngFor="let o of opentext">
+                  <span class="datecolor">{{o.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of opentext">
+        <ng-container *ngIf="w.due<0 && !w.resolved">
+
+          <div class=" opentextcolor2  panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of opentext">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of opentext">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of opentext">
+                <ng-container *ngIf="w.due<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                </ng-container>
+              </div>
+
+
+
+              <div>
+                <div *ngFor="let o of opentext">
+                  <span class="datecolor">{{o.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+
+      <div *ngFor="let w of opentext">
+        <ng-container *ngIf="w.due==0 && !w.resolved">
+
+          <div class=" opentextcolor3  panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of opentext">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of opentext">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of opentext">
+                <ng-container *ngIf="w.due==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+
+
+              <div>
+                <div *ngFor="let o of opentext">
+                  <span class="datecolor">{{o.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of opentext">
+        <ng-container *ngIf="w.due<0 && w.resolved">
+
+          <div class=" opentextcolor4  panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of opentext">
+                <div class="title"> &nbsp;{{o.title}}</div>
+              </div>
+
+              <div *ngFor="let o of opentext">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of opentext">
+                <ng-container *ngIf="w.due<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                </ng-container>
+              </div>
+
+
+
+              <div>
+                <div *ngFor="let o of opentext">
+                  <span class="datecolor">{{o.date}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+        </ng-container>
+      </div>
+
+    </div>
+
+  </div>
+  <br />
+
+
+
+  <div id="displaystyle" class="container-fluid">
+
+    <div class=".container-lg">
+
+
+
+      <div *ngFor="let w of adobedata">
+        <ng-container *ngIf="w.dueAdobe>0 && !w.resolved">
+
+          <div class=" adobecolor1 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobedata">
+                <div class="title"> &nbsp;{{a.titleAdobe}}</div>
+              </div>
+
+              <div *ngFor="let a of adobedata">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobedata">
+                <ng-container *ngIf="w.dueAdobe>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.dueAdobe}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+
+                <div *ngFor="let d of adobedata">
+                  <span class="datecolor">{{d.dateAdobe}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobedata">
+        <ng-container *ngIf="w.dueAdobe<0 && !w.resolved">
+
+          <div class=" adobecolor2 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobedata">
+                <div class="title"> &nbsp;{{a.titleAdobe}}</div>
+              </div>
+
+              <div *ngFor="let a of adobedata">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobedata">
+                <ng-container *ngIf="w.dueAdobe<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{-w.dueAdobe}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+
+                <div *ngFor="let d of adobedata">
+                  <span class="datecolor">{{d.dateAdobe}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobedata">
+        <ng-container *ngIf="w.dueAdobe==0 && !w.resolved">
+
+          <div class=" adobecolor3 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobedata">
+                <div class="title"> &nbsp;{{a.titleAdobe}}</div>
+              </div>
+
+              <div *ngFor="let a of adobedata">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+
+              <div *ngFor="let w of adobedata">
+                <ng-container *ngIf="w.dueAdobe==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+
+              <div>
+
+                <div *ngFor="let d of adobedata">
+                  <span class="datecolor">{{d.dateAdobe}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
+      <div *ngFor="let w of adobedata">
+        <ng-container *ngIf="w.dueAdobe<0 && w.resolved">
+
+          <div class=" adobecolor4 panel panel-default text-center" style="height:130px;">
+
+            <div style="padding-top: 10px;" class="panel-heading">
+
+              <img *ngFor="let a of adobe" src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let a of adobedata">
+                <div class="title"> &nbsp;{{a.titleAdobe}}</div>
+              </div>
+
+              <div *ngFor="let a of adobedata">
+                <div class="name"> &nbsp;{{a.name}}</div>
+              </div>
+
+            </div>
+            <div class="details">
+
+              <div *ngFor="let w of adobedata">
+                <ng-container *ngIf="w.dueAdobe<0 && w.resolved">
+                  <span class="datecolor4">Resolved {{-w.dueAdobe}} days ago</span>
+                </ng-container>
+              </div>
+              <div>
+
+                <div *ngFor="let d of adobedata">
+                  <span class="datecolor">{{d.dateAdobe}}</span>
+
+                </div>
+              </div>
+
+
+
+            </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
+          </div>
+
+
+        </ng-container>
+      </div>
+
 
     </div>
 
@@ -265,287 +1761,252 @@
 
     <div class=".container-lg">
 
-      <div class="outlookcolor panel panel-default text-center" style="height:130px;">
+      <div *ngFor="let w of outlookdata">
+        <ng-container *ngIf="w.due4>0 && !w.resolved">
 
-        <div style="padding-top: 10px;" class="panel-heading">
+          <div class=" outlookcolor1 panel panel-default text-center" style="height:130px;">
 
-          <img src=" https://d2c0jhkf0fswap.cloudfront.net/static/media/MicrosoftTeams-image.a6eea134e5a9294a5657.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+            <div style="padding-top: 10px;" class="panel-heading">
 
-          <div *ngFor="let o of outlook">
-            <div class="title"> &nbsp;{{o.title}}</div>
-          </div>
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-          <div *ngFor="let o of outlook">
-            <div class="name"> &nbsp;{{o.name}}</div>
-          </div>
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlookdata">
+                <div class="title"> &nbsp;{{o.title2}}</div>
+              </div>
 
-        </div>
-
-        <div class="details">
-          <div class="outlookDueDays outlookDueDuration" *ngFor="let o of outlook">Due in {{o.due}} day</div>
-          <div>
-            <div *ngFor="let o of outlook">
-              <span class="datecolor">{{o.date}}</span>
+              <div *ngFor="let o of outlookdata">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
 
             </div>
-          </div>
-        </div>
+            <div class="details">
 
-        <div class="panel-body" style="position:relative; top:-30px;">
+              <div *ngFor="let w of outlookdata">
+                <ng-container *ngIf="w.due4>0 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due4}} days</span>
+                </ng-container>
+              </div>
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+              <div>
+                <div *ngFor="let o of outlookdata">
+                  <span class="datecolor">{{o.dateTask2}}</span>
 
-            <div class="buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+
+
             </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
           </div>
-          <br>
 
-
-          <br>
-
-        </div>
-
+        </ng-container>
       </div>
 
-    </div>
+      <div *ngFor="let w of outlookdata">
+        <ng-container *ngIf="w.due4==0 && !w.resolved">
 
-  </div>
-  <br />
+          <div class=" outlookcolor3 panel panel-default text-center" style="height:130px;">
 
+            <div style="padding-top: 10px;" class="panel-heading">
 
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-  <div id="displaystyle" class="container-fluid">
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlookdata">
+                <div class="title"> &nbsp;{{o.title2}}</div>
+              </div>
 
-    <div class=".container-lg">
-
-      <div class="sapcolor panel panel-default text-center" style="height:130px;">
-
-        <div style="padding-top: 10px;" class=" panel-heading">
-
-          <img src="../../assets/Image/sapconcur.svg" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-
-          <div *ngFor="let o of sapconcur">
-            <div class="title"> &nbsp;{{o.title}}</div>
-          </div>
-
-          <div *ngFor="let o of sapconcur">
-            <div class="name"> &nbsp;{{o.name}}</div>
-          </div>
-
-        </div>
-
-        <div class="details">
-          <div class="SapDueDays SapDueDuration">Due Today</div>
-          <div>
-            <div *ngFor="let s of sapconcur">
-              <span class="datecolor">{{s.date}}</span>
+              <div *ngFor="let o of outlookdata">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
 
             </div>
-          </div>
+            <div class="details">
+
+              <div *ngFor="let w of outlookdata">
+                <ng-container *ngIf="w.due4==0 && !w.resolved">
+                  <span class="datecolor3">Due Today</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let o of outlookdata">
+                  <span class="datecolor">{{o.dateTask2}}</span>
+
+                </div>
+              </div>
 
 
-        </div>
 
-        <div class="panel-body" style="position:relative; top:-30px;">
-
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
-
-            <div class="buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
             </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
           </div>
-          <br><br>
 
-        </div>
-
+        </ng-container>
       </div>
 
-    </div>
+      <div *ngFor="let w of outlookdata">
+        <ng-container *ngIf="w.due4<0 && !w.resolved">
 
-  </div>
-  <br />
+          <div class=" outlookcolor2 panel panel-default text-center" style="height:130px;">
 
+            <div style="padding-top: 10px;" class="panel-heading">
 
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-  <div id="displaystyle" class="container-fluid">
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlookdata">
+                <div class="title"> &nbsp;{{o.title2}}</div>
+              </div>
 
-    <div class=".container-lg">
-
-      <div class="opentextcolor panel panel-default text-center" style="height:130px;">
-
-        <div style="padding-top: 10px;" class="panel-heading">
-
-          <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-
-          <div *ngFor="let o of opentext">
-            <div class="title"> &nbsp;{{o.title}}</div>
-          </div>
-
-          <div *ngFor="let o of opentext">
-            <div class="name"> &nbsp;{{o.name}}</div>
-          </div>
-
-        </div>
-
-        <div class="details">
-          <div class="OpentextDueDays OpentextDueDuration" *ngFor="let o of opentext">Overdue by {{o.due}} days</div>
-          <div>
-            <div *ngFor="let o of opentext">
-              <span class="datecolor">{{o.date}}</span>
+              <div *ngFor="let o of outlookdata">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
 
             </div>
-          </div>
+            <div class="details">
+
+              <div *ngFor="let w of outlookdata">
+                <ng-container *ngIf="w.due4<0 && !w.resolved">
+                  <span class="datecolor2">Overdue by {{-w.due4}} days</span>
+                </ng-container>
+              </div>
+
+              <div>
+                <div *ngFor="let o of outlookdata">
+                  <span class="datecolor">{{o.dateTask2}}</span>
+
+                </div>
+              </div>
 
 
-        </div>
 
-        <div class="panel-body" style="position:relative; top:-30px;">
-
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
-
-            <div class="buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
             </div>
+
+
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
+
+
+            </div>
+
           </div>
-          <br><br>
 
-        </div>
-
+        </ng-container>
       </div>
 
-    </div>
+      <div *ngFor="let w of outlookdata">
+        <ng-container *ngIf="w.due4<0 && w.resolved">
 
-  </div>
-  <br />
+          <div class=" outlookcolor4 panel panel-default text-center" style="height:130px;">
 
+            <div style="padding-top: 10px;" class="panel-heading">
 
+              <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-  <div id="displaystyle" class="container-fluid">
+              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
+              <div *ngFor="let o of outlookdata">
+                <div class="title"> &nbsp;{{o.title2}}</div>
+              </div>
 
-    <div class=".container-lg">
-
-      <div class="adobecolor panel panel-default text-center" style="height:130px;">
-
-        <div style="padding-top: 10px;" class="panel-heading">
-
-          <img src="../../assets/Image/adobesign.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-
-          <div *ngFor="let a of adobedata">
-            <div class="title"> &nbsp;{{a.titleAdobe}}</div>
-          </div>
-
-          <div *ngFor="let a of adobedata">
-            <div class="name"> &nbsp;{{a.name}}</div>
-          </div>
-
-        </div>
-
-        <div class="details">
-          <div class="adobedueDays adobedueDuration" *ngFor="let a of adobedata">Resolved {{a.dueAdobe}} days ago</div>
-          <div>
-            <div *ngFor="let a of adobedata">
-              <span class="datecolor">{{a.dateAdobe}}</span>
+              <div *ngFor="let o of outlookdata">
+                <div class="name"> &nbsp;{{o.name}}</div>
+              </div>
 
             </div>
-          </div>
-        </div>
+            <div class="details">
 
-        <div class="panel-body" style="position:relative; top:-30px;">
+              <div *ngFor="let w of outlookdata">
+                <ng-container *ngIf="w.due4<0 && w.resolved">
+                  <span class="datecolor4">Resolved  {{-w.due4}} days ago</span>
+                </ng-container>
+              </div>
 
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+              <div>
+                <div *ngFor="let o of outlookdata">
+                  <span class="datecolor">{{o.dateTask2}}</span>
 
-            <div class="buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
-            </div>
-          </div>
-          <br><br>
+                </div>
+              </div>
 
 
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <br />
-
-  <div id="displaystyle" class="container-fluid">
-
-    <div class=".container-lg">
-
-      <div class=" outlookcolor panel panel-default text-center" style="height:130px;">
-
-        <div style="padding-top: 10px;" class="panel-heading">
-
-          <img *ngFor="let o of outlook" src="../../assets/Image/outlook.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-
-          <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
-          <div *ngFor="let o of outlookdata">
-            <div class="title"> &nbsp;{{o.title2}}</div>
-          </div>
-
-          <div *ngFor="let o of outlookdata">
-            <div class="name"> &nbsp;{{o.name}}</div>
-          </div>
-
-        </div>
-        <div class="details">
-          <div class="outlookDueDays outlookDueDuration" *ngFor="let o of outlookdata">Due in {{o.due4}} day</div>
-
-
-          <div>
-            <div *ngFor="let o of outlookdata">
-              <span class="datecolor">{{o.dateTask2}}</span>
 
             </div>
-          </div>
 
 
+            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
-        </div>
+                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                </div>
+              </div>
+
+              <br><br>
 
 
-        <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
-          <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-            <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-            <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
-              &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
             </div>
+
           </div>
 
-          <br><br>
-
-
-        </div>
-
+        </ng-container>
       </div>
 
     </div>
