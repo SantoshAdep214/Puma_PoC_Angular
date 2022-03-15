@@ -18,7 +18,9 @@ export class HomepageComponent implements OnInit {
   public opentext?: Data[];
   public sapconcur?: Data[];
   public outlook?: Data[];
-  
+  public count?: Data[];
+  public adobe2?: Data[];
+  public outlook2?: Data[];
     ShowLoadingIndicator=true;
 
  /* constructor(private router: Router, http: HttpClient) {
@@ -50,6 +52,13 @@ export class HomepageComponent implements OnInit {
       console.log(Object.values(result));
     }, error => console.error(error));
 
+    http.get<Data[]>('/api/AdobeCard2').subscribe(result => {
+      this.adobe2 = result;
+      console.log(JSON.stringify(this.adobe2));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+
     http.get<Data[]>('/api/Outlook').subscribe(result => {
       this.outlook = result;
       console.log(JSON.stringify(this.outlook));
@@ -67,6 +76,25 @@ export class HomepageComponent implements OnInit {
       console.log(JSON.stringify(this.opentext));
       console.log(Object.values(result));
     }, error => console.error(error));
+
+    http.get<Data[]>('/api/Count').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<Data[]>('/api/').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<Data[]>('/api/Data').subscribe(result => {
+      this.outlook2 = result;
+      console.log(JSON.stringify(this.outlook2));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
 
   }
 
@@ -131,4 +159,12 @@ interface Data {
   imageUrl: string;
   name: string;
   date: string;
+
+  workdaycount: number;
+  adobecount: number;
+  sapcount: number;
+  opentextcount: number;
+  todocount: number;
+  outlookcount: number;
+  count: number;
 }

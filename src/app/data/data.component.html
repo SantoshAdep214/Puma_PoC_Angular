@@ -13,8 +13,8 @@
       <div>
         <span class="HomePageTitle"> Max Mustermann</span>
       </div>
-      <div>
-        <span class="HomePageTitle"><strong> You've got 7 tasks to complete</strong></span>
+      <div *ngFor="let c of count">
+        <span class="HomePageTitle"><strong> You've got {{c.count}} tasks to complete</strong></span>
       </div>
     </div>
     <div>
@@ -26,115 +26,67 @@
 
 <br>
 <br>
-<div style="position: relative;padding-left: 200px;" class=".container-lg">
+<div style="position: relative;padding-left: 132px;" class=".container-lg">
 
-  <button type="button" class="btn btn-light" (click)="calender()">Show Calander&nbsp; &nbsp;<i class="fa fa-eye"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="calender()">{{calvalue}}&nbsp; &nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="search()">
+    {{btnVal}}&nbsp; &nbsp;<i class="fa fa-{{icon2}}"></i>
+  </button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius: 8px; height: 50px;" (click)="filter()">{{showfilter}} &nbsp; &nbsp;<i class="fa fa-{{icon3}}"></i></button>
 
-  <button type="button" class="btn btn-light" (click)="search()">Show Search&nbsp; &nbsp;<i class="fa fa-eye"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="right float-right btn btn-light"
+          style="border-radius: 8px; height: 50px;width:250px;">
+    Show Source Bar &nbsp;
+    <i class='fas fa-angle-right'> </i>
+  </button>
 
-  <button type="button" class="btn btn-light" (click)="filter()">Show Filter  &nbsp; &nbsp;<i class="fa fa-eye"></i></button>
 
-  <!--  <button class="btn btn-default" data-toggle="tooltip" title="Like">like<i class='fas fa-angle-right'> </i></button>-->
-
-
-  <button type="button" class="right float-right btn btn-light">Show Source Bar &nbsp;  <i class='fas fa-angle-right'> </i></button>
-
-  <!--<script>
-      $("button").click(function () {
-        $(this).find("i").removeClass("fa-angle-right").addClass("fa-caret-down");
-      });
-    </script>-->
-
-  <h5 *ngIf="showMesearch" style="margin-left: 00px; margin-right:200px; padding-top:2%">
+  <h5 *ngIf="showMesearch" style="margin-left: 0px; margin-right: 132px; padding-top:2%">
     <!--<span class="glyphicon glyphicon-search"></span>-->
     <div class="form-outline mb-4">
-      <input type="search" class=" search form-control" placeholder="search..." style="border-radius:10px;">
+      <input type="search" class="search form-control" placeholder="search..." style="border-radius:10px;">
       <span class="glyphicon glyphicon-search"></span>
     </div>
   </h5>
 
 
 
-
   <h5 *ngIf="showFilter">
     <div class="btn-top form-outline mb-4">
-      Filter By : <button type="button" class=" btn btn-light" style="font-size:small">
-        Selected Source [4]&nbsp;&nbsp;
+      Filter By : <button type="button" class=" btn btn-light" style="font-size:small; border-radius:8px;">
+        Selected Source [1]&nbsp;&nbsp;
         <i class='fas fa-caret-down'></i>
       </button>
-      &nbsp;&nbsp;
-      <button type="button" class=" btn btn-light" style="font-size:small">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
 
+      &nbsp;&nbsp;<button type="button" class=" btn btn-light" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
+     
     </div>
   </h5>
 
-
-  <div class=" container-fluid">
+  <div class="container-fluid">
     <div class="row">
       <h5 *ngIf="showMecalnder">
-        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:20px;">
-          <!--<input type="date" style="border-radius:11px; width:217px">-->
-          <!--  <div>
-              <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'> </ejs-calendar>
-            </div>-->
+        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:0px;">
           <div class="container">
 
-            <!--<div class='demo-app'>
-
-              <div class='demo-app-sidebar'>
-                <div class='demo-app-sidebar-section'>
-                  <h2>Instructions</h2>
-                  <ul>
-                    <li>Select dates and you will be prompted to create a new event</li>
-                    <li>Drag, drop, and resize events</li>
-                    <li>Click an event to delete it</li>
-                  </ul>
-                </div>
-                <div class='demo-app-sidebar-section'>
-                  <label>
-                    <input type='checkbox'
-                           [checked]='calendarVisible'
-                           (change)='handleCalendarToggle()' />
-                    toggle whole calendar
-                  </label>
-                </div>
-                <div class='demo-app-sidebar-section'>
-                  <label>
-                    <input type='checkbox'
-                           [checked]='calendarOptions.weekends'
-                           (change)='handleWeekendsToggle()' />
-                    toggle weekends
-                  </label>
-                </div>
-                <div class='demo-app-sidebar-section'>
-                  <h2>All Events ({{currentEvents.length}})</h2>
-                  <ul>
-                    <li *ngFor='let event of currentEvents'>
-                      <b>{{event.startStr}}</b>
-                      <i>{{event.title}}</i>
-                    </li>
-                  </ul>
-                </div>
-              </div>-->
 
             <div class='demo-app-main'>
+
+              <h6 class="currentdate" style="position:relative;top:150px;left:-140px; font-weight:bold">Today is : {{currentDate}} </h6>
               <full-calendar *ngIf='calendarVisible'
                              [options]='calendarOptions'></full-calendar>
             </div>
-
-
-
           </div>
 
-          <h6 class="currentdate" style="margin-top:10px;">Today is : {{currentDate}} </h6>
+
+
 
         </div>
-
-
 
       </h5>
     </div>
   </div>
+
 </div>
 
 
@@ -166,7 +118,12 @@
 
               <div *ngFor="let w of workday">
                 <ng-container *ngIf="w.due>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.due}} days</span>
+                  <ng-container *ngIf="w.due==1">
+                    <span class="datecolor1">Due in {{w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due>1">
+                    <span class="datecolor1">Due in {{w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -181,17 +138,16 @@
 
             </div>
 
-
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+      <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius:8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -228,7 +184,8 @@
 
               <div *ngFor="let w of workday">
                 <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{w.due}} days</span>
+                  <ng-container *ngIf="w.due==-1"> <span class="datecolor2">Overdue by {{-w.due}} day</span></ng-container>
+                  <ng-container *ngIf="w.due>-1"> <span class="datecolor2">Overdue by {{-w.due}} days</span></ng-container>
                 </ng-container>
               </div>
 
@@ -248,14 +205,14 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -310,14 +267,14 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -351,7 +308,8 @@
 
               <div *ngFor="let w of workday">
                 <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{w.due}} ago</span>
+                  <ng-container *ngIf="w.due==-1"><span class="datecolor4">Resolved {{-w.due}} day ago</span></ng-container>
+                  <ng-container *ngIf="w.due<-1"><span class="datecolor4">Resolved {{-w.due}} days ago</span></ng-container>
                 </ng-container>
               </div>
 
@@ -369,14 +327,14 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -426,31 +384,12 @@
 
               <div *ngFor="let w of adobe">
                 <ng-container *ngIf="w.due>0 && !w.resolved">
+                  <ng-container *ngIf="w.due==1"> <span class="datecolor1">Due in {{w.due}} day</span></ng-container>
+                  <ng-container *ngIf="w.due>1"> <span class="datecolor1">Due in {{w.due}} days</span></ng-container>
                   <span class="datecolor1">Due in {{w.due}} days</span>
                 </ng-container>
               </div>
 
-
-
-              <!-- <div *ngFor="let w of adobe">
-                <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{w.due}} days</span>
-                </ng-container>
-              </div>
-
-
-
-              <div *ngFor="let w of adobe">
-                <ng-container *ngIf="w.due==0 && !w.resolved">
-                  <span class="datecolor3">Due Today</span>
-                </ng-container>
-              </div>
-
-              <div *ngFor="let w of adobe">
-                <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{w.due}} ago</span>
-                </ng-container>
-              </div>-->
               <div>
 
                 <div *ngFor="let d of adobe">
@@ -466,14 +405,14 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -511,7 +450,8 @@
 
               <div *ngFor="let w of adobe">
                 <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  <ng-container *ngIf="w.due==-1">  <span class="datecolor2">Overdue by {{-w.due}} day</span></ng-container>
+                  <ng-container *ngIf="w.due<-1">  <span class="datecolor2">Overdue by {{-w.due}} days</span></ng-container>
                 </ng-container>
               </div>
 
@@ -530,14 +470,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+               
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -596,14 +534,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+              
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -641,7 +577,12 @@
 
               <div *ngFor="let w of adobe">
                 <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor4">Resolved {{-w.due}} day ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
               <div>
@@ -659,14 +600,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -715,7 +653,8 @@
 
               <div *ngFor="let w of outlook">
                 <ng-container *ngIf="w.due>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.due}} days</span>
+                  <ng-container *ngIf="w.due==1">    <span class="datecolor1">Due in {{w.due}} day</span></ng-container>
+                  <ng-container *ngIf="w.due>1">    <span class="datecolor1">Due in {{w.due}} days</span></ng-container>
                 </ng-container>
               </div>
 
@@ -733,14 +672,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -778,7 +714,12 @@
 
               <div *ngFor="let w of outlook">
                 <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">overdue by {{-w.due}} days</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor2">overdue by {{-w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor2">overdue by {{-w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -796,14 +737,14 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                 <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -860,14 +801,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -905,7 +843,12 @@
 
               <div *ngFor="let w of outlook">
                 <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor4">Resolved {{-w.due}} day ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -923,14 +866,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -980,13 +920,16 @@
 
 
             </div>
-
-            <!-- <div class="dueDays dueDuration"  [ngClass]="{greenClass: s.resolved, redClass: !s.resolved}">Due Today</div>-->
             <div class="details">
 
               <div *ngFor="let w of sapconcur">
                 <ng-container *ngIf="w.due>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.due}} days</span>
+                  <ng-container *ngIf="w.due==1">
+                    <span class="datecolor1">Due in {{w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due>1">
+                    <span class="datecolor1">Due in {{w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1001,11 +944,11 @@
             <div class="panel-body" style="position:relative; top:-30px;">
 
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <div class="btngroup btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+                <div class="sapbtngroup btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1048,7 +991,12 @@
 
               <div *ngFor="let w of sapconcur">
                 <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor2">Overdue by {{-w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1064,14 +1012,11 @@
             <div class="panel-body" style="position:relative; top:-30px;">
 
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
-
-                <div class="btngroup btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+                <div class="btngroup btn-group" role="group" aria-label="Basic example" style="position:relative;right:55px;">
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1126,14 +1071,11 @@
             <div class="panel-body" style="position:relative; top:-30px;">
 
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class="sapbtngroup btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1176,7 +1118,12 @@
 
               <div *ngFor="let w of sapconcur">
                 <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{w.due}} days ago</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor4">Resolved {{w.due}} day ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor4">Resolved {{w.due}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1192,14 +1139,13 @@
             <div class="panel-body" style="position:relative; top:-30px;">
 
               <div class="sap-btn btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--   <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button> -->
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+             
 
                 <div class="sapbtngroup btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task&nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1245,7 +1191,12 @@
 
               <div *ngFor="let w of opentext">
                 <ng-container *ngIf="w.due>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.due}} days</span>
+                  <ng-container *ngIf="w.due==1">
+                    <span class="datecolor1">Due in {{w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due>1">
+                    <span class="datecolor1">Due in {{w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1265,14 +1216,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+             
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1310,7 +1259,12 @@
 
               <div *ngFor="let w of opentext">
                 <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor2">Overdue by {{-w.due}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1330,14 +1284,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+  
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1395,14 +1347,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+              
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1439,7 +1389,12 @@
 
               <div *ngFor="let w of opentext">
                 <ng-container *ngIf="w.due<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  <ng-container *ngIf="w.due==-1">
+                    <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due<-1">
+                    <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1459,14 +1414,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+             
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1516,7 +1469,12 @@
 
               <div *ngFor="let w of adobedata">
                 <ng-container *ngIf="w.dueAdobe>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.dueAdobe}} days</span>
+                  <ng-container *ngIf="w.dueAdobe==1">
+                    <span class="datecolor1">Due in {{w.dueAdobe}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.dueAdobe>1">
+                    <span class="datecolor1">Due in {{w.dueAdobe}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1535,14 +1493,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+      
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1580,7 +1536,12 @@
 
               <div *ngFor="let w of adobedata">
                 <ng-container *ngIf="w.dueAdobe<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{-w.dueAdobe}} days</span>
+                  <ng-container *ngIf="w.dueAdobe==-1">
+                    <span class="datecolor2">Overdue by {{-w.dueAdobe}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.dueAdobe<-1">
+                    <span class="datecolor2">Overdue by {{-w.dueAdobe}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1599,14 +1560,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+           
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1665,14 +1624,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+              
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1710,7 +1667,12 @@
 
               <div *ngFor="let w of adobedata">
                 <ng-container *ngIf="w.dueAdobe<0 && w.resolved">
-                  <span class="datecolor4">Resolved {{-w.dueAdobe}} days ago</span>
+                  <ng-container *ngIf="w.dueAdobe==-1">
+                    <span class="datecolor4">Resolved {{-w.dueAdobe}} day ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.dueAdobe<-1">
+                    <span class="datecolor4">Resolved {{-w.dueAdobe}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
               <div>
@@ -1728,14 +1690,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+          
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1784,7 +1744,12 @@
 
               <div *ngFor="let w of outlookdata">
                 <ng-container *ngIf="w.due4>0 && !w.resolved">
-                  <span class="datecolor1">Due in {{w.due4}} days</span>
+                  <ng-container *ngIf="w.due4==1">
+                    <span class="datecolor1">Due in {{w.due4}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due4>1">
+                    <span class="datecolor1">Due in {{w.due4}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1802,14 +1767,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+           
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1864,14 +1827,12 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+              
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1908,7 +1869,12 @@
 
               <div *ngFor="let w of outlookdata">
                 <ng-container *ngIf="w.due4<0 && !w.resolved">
-                  <span class="datecolor2">Overdue by {{-w.due4}} days</span>
+                  <ng-container *ngIf="w.due4==-1">
+                    <span class="datecolor2">Overdue by {{-w.due4}} day</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due4<-1">
+                    <span class="datecolor2">Overdue by {{-w.due4}} days</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1926,14 +1892,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
@@ -1970,7 +1933,12 @@
 
               <div *ngFor="let w of outlookdata">
                 <ng-container *ngIf="w.due4<0 && w.resolved">
-                  <span class="datecolor4">Resolved  {{-w.due4}} days ago</span>
+                  <ng-container *ngIf="w.due4==-1">
+                    <span class="datecolor4">Resolved  {{-w.due4}} day ago</span>
+                  </ng-container>
+                  <ng-container *ngIf="w.due4<-1">
+                    <span class="datecolor4">Resolved  {{-w.due4}} days ago</span>
+                  </ng-container>
                 </ng-container>
               </div>
 
@@ -1988,14 +1956,11 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
+            <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 

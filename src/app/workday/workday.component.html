@@ -12,8 +12,8 @@
       <div>
         <span class="HomePageTitle"> Max Mustermann</span>
       </div>
-      <div>
-        <span class="HomePageTitle"><strong> You've got 7 tasks to complete</strong></span>
+      <div *ngFor="let c of count">
+        <span class="HomePageTitle"><strong> You've got {{c.count}} tasks to complete</strong></span>
       </div>
     </div>
     <div>
@@ -25,20 +25,23 @@
 
 <br>
 <br>
-<div style="position: relative;padding-left: 200px;" class=".container-lg">
+<div style="position: relative;padding-left: 132px;" class=".container-lg">
 
-  <button type="button" class="btn btn-light" (click)="calender()">Show Calander &nbsp; &nbsp;<i class="fa fa-eye"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="calender()">{{calvalue}}&nbsp; &nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="search()">
+    {{btnVal}}&nbsp; &nbsp;<i class="fa fa-{{icon2}}"></i>
+  </button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light" style="border-radius: 8px; height: 50px;" (click)="filter()">{{showfilter}} &nbsp; &nbsp;<i class="fa fa-{{icon3}}"></i></button>
 
-  <button type="button" class="btn btn-light" (click)="search()">Show Search&nbsp; &nbsp;<i class="fa fa-eye"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="right float-right btn btn-light"
+          style="border-radius: 8px; height: 50px;width:250px;">Show Source Bar &nbsp;
+  <i class='fas fa-angle-right'> </i></button>
 
-  <button type="button" class="btn btn-light" (click)="filter()">Show Filter&nbsp; &nbsp;<i class="fa fa-eye"></i></button>
-  <button type="button" class="right float-right btn btn-light">Show Source Bar &nbsp;  <i class='fas fa-angle-right'> </i></button>
 
-
-  <h5 *ngIf="showMesearch" style="margin-left: 0px; margin-right: 200px; padding-top:2%">
+  <h5 *ngIf="showMesearch" style="margin-left: 0px; margin-right: 132px; padding-top:2%">
     <!--<span class="glyphicon glyphicon-search"></span>-->
     <div class="form-outline mb-4">
-      <input type="search" class=" search form-control" placeholder="search..." style="border-radius:10px;">
+      <input type="search" class="search form-control" placeholder="search..." style="border-radius:10px;">
       <span class="glyphicon glyphicon-search"></span>
     </div>
   </h5>
@@ -47,67 +50,70 @@
 
   <h5 *ngIf="showFilter">
     <div class="btn-top form-outline mb-4">
-      Filter By : <button type="button" class=" btn btn-light" style="font-size:small">
-        Selected Source [1]&nbsp;&nbsp;
-        <i class='fas fa-caret-down'></i>
-      </button>
+      Filter By : <button type="button" class=" btn btn-light" style="font-size:small; border-radius:8px;">
+  Selected Source [1]&nbsp;&nbsp;
+  <i class='fas fa-caret-down'></i>
+</button>
 
-      &nbsp;&nbsp;<button type="button" class=" btn btn-light" style="font-size:small">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
-      <button type="button" class="reset float-right btn btn-light" (click)="ResetAll()">Reset All &nbsp;&nbsp;<i class="fa fa-rotate-left" style='color:red'></i></button>
+      &nbsp;&nbsp;<button type="button" class=" btn btn-light" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
+      <button type="button" class="reset float-right btn btn-light" style="border-radius:8px;"
+              (click)="ResetAll()">Reset All &nbsp;&nbsp;<i class="fa fa-rotate-left" style='color:red'></i></button>
     </div>
   </h5>
 
   <div class="container-fluid">
     <div class="row">
       <h5 *ngIf="ShowMeCalender">
-        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:20px;">
+        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:0px;">
           <div class="container">
             <!--<div class='demo-app'>
 
-            <div class='demo-app-sidebar'>
-              <div class='demo-app-sidebar-section'>
-                <h2>Instructions</h2>
-                <ul>
-                  <li>Select dates and you will be prompted to create a new event</li>
-                  <li>Drag, drop, and resize events</li>
-                  <li>Click an event to delete it</li>
-                </ul>
-              </div>
-              <div class='demo-app-sidebar-section'>
-                <label>
-                  <input type='checkbox'
-                         [checked]='calendarVisible'
-                         (change)='handleCalendarToggle()' />
-                  toggle whole calendar
-                </label>
-              </div>
-              <div class='demo-app-sidebar-section'>
-                <label>
-                  <input type='checkbox'
-                         [checked]='calendarOptions.weekends'
-                         (change)='handleWeekendsToggle()' />
-                  toggle weekends
-                </label>
-              </div>
-              <div class='demo-app-sidebar-section'>
-                <h2>All Events ({{currentEvents.length}})</h2>
-                <ul>
-                  <li *ngFor='let event of currentEvents'>
-                    <b>{{event.startStr}}</b>
-                    <i>{{event.title}}</i>
-                  </li>
-                </ul>
-              </div>
-            </div>-->
-
+  <div class='demo-app-sidebar'>
+    <div class='demo-app-sidebar-section'>
+      <h2>Instructions</h2>
+      <ul>
+        <li>Select dates and you will be prompted to create a new event</li>
+        <li>Drag, drop, and resize events</li>
+        <li>Click an event to delete it</li>
+      </ul>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <label>
+        <input type='checkbox'
+               [checked]='calendarVisible'
+               (change)='handleCalendarToggle()' />
+        toggle whole calendar
+      </label>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <label>
+        <input type='checkbox'
+               [checked]='calendarOptions.weekends'
+               (change)='handleWeekendsToggle()' />
+        toggle weekends
+      </label>
+    </div>
+    <div class='demo-app-sidebar-section'>
+      <h2>All Events ({{currentEvents.length}})</h2>
+      <ul>
+        <li *ngFor='let event of currentEvents'>
+          <b>{{event.startStr}}</b>
+          <i>{{event.title}}</i>
+        </li>
+      </ul>
+    </div>
+  </div>-->
+            
             <div class='demo-app-main'>
+             
+              <h6 class="currentdate" style="position:relative;top:150px;left:-135px; font-weight:bold">Today is : {{currentDate}} </h6>
               <full-calendar *ngIf='calendarVisible'
                              [options]='calendarOptions'></full-calendar>
             </div>
           </div>
 
 
-          <h6 class="currentdate" style="margin-top:10px;">Today is : {{currentDate}} </h6>
+         
 
         </div>
 
@@ -191,7 +197,12 @@
 
             <div *ngFor="let w of workday">
               <ng-container *ngIf="w.due>0 && !w.resolved">
-                <span class="datecolor1">Due in {{w.due}} days</span>
+                <ng-container *ngIf="w.due==1">
+                  <span class="datecolor1">Due in {{w.due}} day</span>
+                </ng-container>
+                <ng-container *ngIf="w.due>1 && !w.resolved">
+                  <span class="datecolor1">Due in {{w.due}} days</span>
+                </ng-container>
               </ng-container>
             </div>
 
@@ -209,14 +220,14 @@
 
           <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+              <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
               <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+      <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius:8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
               </div>
             </div>
 
@@ -228,8 +239,6 @@
         </div>
       </ng-container>
     </div>
-
-
 
     <div *ngFor="let w of workday">
       <ng-container *ngIf="w.due<0 && !w.resolved">
@@ -253,7 +262,12 @@
 
             <div *ngFor="let w of workday">
               <ng-container *ngIf="w.due<0 && !w.resolved">
-                <span class="datecolor2">Overdue by {{w.due}} days</span>
+                <ng-container *ngIf="w.due==-1">
+                  <span class="datecolor2">Overdue by {{w.due}} day</span>
+                </ng-container>
+                <ng-container *ngIf="w.due<-1">
+                  <span class="datecolor2">Overdue by {{w.due}} days</span>
+                </ng-container>
               </ng-container>
             </div>
 
@@ -273,14 +287,14 @@
 
           <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+              <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
               <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius:8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius:8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
               </div>
             </div>
 
@@ -335,14 +349,14 @@
 
           <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+              <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
               <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
              <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
               </div>
             </div>
 
@@ -376,7 +390,12 @@
 
             <div *ngFor="let w of workday">
               <ng-container *ngIf="w.due<0 && w.resolved">
-                <span class="datecolor4">Resolved {{w.due}} ago</span>
+                <ng-container *ngIf="w.due==-1">
+                  <span class="datecolor4">Resolved {{-w.due}} day ago</span>
+                </ng-container>
+                <ng-container *ngIf="w.due<-1">
+                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+                </ng-container>
               </ng-container>
             </div>
 
@@ -394,14 +413,14 @@
 
           <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" style="position: -webkit-sticky;margin-right: 700px; margin-left: 50px;" class="btn btn-light">. . .</button>
+              <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
               <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-light">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-light">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
               </div>
             </div>
 

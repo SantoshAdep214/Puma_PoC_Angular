@@ -137,7 +137,7 @@
 .right {
   /* margin-left:470px;*/
 
-  margin-right: 200px;
+  margin-right: 132px;
 }
 
 .Introduction {
@@ -154,12 +154,12 @@
 .reset {
   /* margin-left:470px;*/
 
-  margin-right: 200px;
+  margin-right: 132px;
 }
 button {
   font-size: 13px;
   font-weight: bold;
-  border-radius: 12px;
+ /* border-radius: 12px;*/
   background-color: lightgrey;
 }
 
@@ -292,6 +292,7 @@ b { /* used for event dates/times */
 .demo-app-main {
   flex-grow: 1;
   padding: 3em;
+  height:420px;
 }
 
 .fc { /* the calendar root */
@@ -299,17 +300,18 @@ b { /* used for event dates/times */
   margin: 0 auto;
 }
 
-full-calendar{
-    width:865px;
-    top:-80px;
-    border-radius:15px;
-    height:500px;
-    position:relative;
-    right:78px;
+full-calendar {
+  width: 777px;
+  top: -110px;
+  border-radius: 15px;
+  height: 450px;
+  position: relative;
+  left: 90px;
 }
 .currentdate{
     position:relative;
     top:-120px;
+   
 }
 .datecolor{
     color:black;

@@ -8,7 +8,8 @@ const PROXY_CONFIG = [
       "/api/SAPConcur",
       "/api/Outlook",
       "/api/Opentext",
-      "/api/AdobeCard2"
+      "/api/AdobeCard2",
+      "/api/Count"
     ],
     target: "https://localhost:7069",  //5001 
     secure: false 

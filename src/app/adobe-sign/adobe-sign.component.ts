@@ -15,6 +15,13 @@ export class AdobeSignComponent implements OnInit {
   showFilter: boolean = false;
   ShowMeCalender: boolean = false;
 
+  btnVal = "Show Search";
+  calvalue = "Show Calendar";
+  showfilter = "Show Filter";
+  icon1 = "eye";
+  icon2 = "eye";
+  icon3 = "eye";
+
   public today: Date = new Date();
   public currentDate: String = (this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear());
 
@@ -44,6 +51,8 @@ export class AdobeSignComponent implements OnInit {
 
   public adobedata?: Adobe[];
 
+  public count?: Adobe[];
+
   constructor(private ngxService: NgxUiLoaderService, private router: Router, http: HttpClient) {
 
     http.get<Adobe[]>('/api/Adobe').subscribe(result => {
@@ -55,6 +64,12 @@ export class AdobeSignComponent implements OnInit {
     http.get<Adobe[]>('/api/AdobeCard2').subscribe(result => {
       this.adobedata = result;
       console.log(JSON.stringify(this.adobedata));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<Adobe[]>('/api/Count').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
       console.log(Object.values(result));
     }, error => console.error(error));
 
@@ -84,16 +99,40 @@ export class AdobeSignComponent implements OnInit {
   ResetAll = () => {
     this.router.navigateByUrl('/datapage');
   }
+
   calender() {
-    this.ShowMeCalender = !this.ShowMeCalender
+    this.ShowMeCalender = !this.ShowMeCalender;
+    if (this.calvalue == "Hide Calender" && this.icon1 == "eye-slash") {
+      this.calvalue = "Show Calendar";
+      this.icon1 = "eye";
+    } else {
+      this.calvalue = "Hide Calender";
+      this.icon1 = "eye-slash";
+    }
   }
 
   search() {
     this.showMesearch = !this.showMesearch
-  }
 
+    if (this.btnVal == "Hide Search" && this.icon2 == "eye-slash") {
+      this.btnVal = "Show Search";
+      this.icon2 = "eye";
+    }
+    else {
+      this.btnVal = "Hide Search";
+      this.icon2 = "eye-slash";
+    }
+  }
   filter() {
     this.showFilter = !this.showFilter
+    if (this.showfilter == "Hide Filter" && this.icon3 == "eye-slash") {
+      this.showfilter = "Show Filter";
+      this.icon3 = "eye";
+    }
+    else {
+      this.showfilter = "Hide Filter";
+      this.icon3 = "eye-slash";
+    }
   }
   pumahome() {
     this.router.navigateByUrl('/homepage');
@@ -149,4 +188,5 @@ interface Adobe {
   imageUrl: string;
   name: string;
   date: string;
+  count: number;
 }

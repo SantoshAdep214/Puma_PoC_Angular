@@ -38,17 +38,17 @@ import {
 /*import { ScheduleAllModule, RecurrenceEditorAllModule } from '@syncfusion/ej2-ng-schedule'; */
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  /*"bgsColor": "red",
+ "bgsColor": "white",
   "bgsOpacity": 0.8,
   "bgsPosition": "bottom-right",
-  "bgsSize": 150,*/
+  "bgsSize": 0,
   "bgsType": "ball-scale-multiple",
-  "blur": 30,
+  "blur": 300,
   "delay": 0,
   "fastFadeOut": true,
   "fgsColor": "#b5aaaa",
   "fgsPosition": "center-center",
-  "fgsSize": 300,
+  "fgsSize": 150,
   "fgsType": "three-strings",
   "gap": 24,
   "logoPosition": "center-center",

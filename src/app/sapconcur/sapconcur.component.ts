@@ -14,8 +14,14 @@ export class SAPConcurComponent implements OnInit {
 
   showMesearch: boolean = false;
   showFilter: boolean = false;
-
   ShowMeCalender: boolean = false;
+
+  btnVal = "Show Search";
+  calvalue = "Show Calendar";
+  showfilter = "Show Filter";
+  icon1 = "eye";
+  icon2 = "eye";
+  icon3 = "eye";
   public dueCondition:number = 0;
   public today: Date = new Date();
   public currentDate: String = (this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear());
@@ -80,14 +86,40 @@ export class SAPConcurComponent implements OnInit {
   }
 
   calender() {
-    this.ShowMeCalender = !this.ShowMeCalender
+    this.ShowMeCalender = !this.ShowMeCalender;
+    if (this.calvalue == "Hide Calender" && this.icon1 == "eye-slash") {
+      this.calvalue = "Show Calendar";
+      this.icon1 = "eye";
+    } else {
+      this.calvalue = "Hide Calender";
+      this.icon1 = "eye-slash";
+    }
   }
 
   search() {
     this.showMesearch = !this.showMesearch
+
+    if (this.btnVal == "Hide Search" && this.icon2 == "eye-slash") {
+      this.btnVal = "Show Search";
+      this.icon2 = "eye";
+    }
+    else {
+      this.btnVal = "Hide Search";
+      this.icon2 = "eye-slash";
+    }
   }
   filter() {
     this.showFilter = !this.showFilter
+    if (this.showfilter == "Hide Filter" && this.icon3 == "eye-slash")
+    {
+      this.showfilter = "Show Filter";
+      this.icon3 = "eye";
+    }
+    else
+    {
+      this.showfilter = "Hide Filter";
+      this.icon3 = "eye-slash";
+    }
   }
   pumahome() {
     this.router.navigateByUrl('/homepage');
