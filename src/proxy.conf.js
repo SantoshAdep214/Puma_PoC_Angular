@@ -7,6 +7,7 @@ const PROXY_CONFIG = [
       "/api/Adobe",
       "/api/SAPConcur",
       "/api/Outlook",
+      "/api/Source",
       "/api/Opentext",
       "/api/AdobeCard2",
       "/api/Count"

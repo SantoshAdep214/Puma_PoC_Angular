@@ -12,8 +12,8 @@
       <div>
         <span class="HomePageTitle"> Max Mustermann</span>
       </div>
-      <div>
-        <span class="HomePageTitle"><strong> You've got 7 tasks to complete</strong></span>
+      <div *ngFor="let c of count">
+        <span class="HomePageTitle"><strong> You've got {{c.count}} tasks to complete</strong></span>
       </div>
     </div>
     <div>
@@ -101,43 +101,42 @@
     <div class=".container-lg">
 
       <div *ngFor="let w of opentext">
-        <ng-container *ngIf="w.due>0 && !w.resolved">
+        <ng-container *ngIf="w.due>0 && !w.resolved && w.id==w.id">
 
           <div class=" opentextcolor1 panel panel-default text-center" style="height:130px;">
 
             <div style="padding-top: 10px;" class="panel-heading">
-              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
-              <div *ngFor="let o of opentext">
-                <div class="title"> &nbsp;{{o.title}}</div>
-              </div>
 
-              <div *ngFor="let o of opentext">
-                <div class="name"> &nbsp;{{o.name}}</div>
-              </div>
+              <ng-container *ngIf="w.id==w.id && !w.resolved && w.title==w.title">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </ng-container>
 
-            </div>
+              <ng-container *ngIf="w.id==w.id && !w.resolved && w.title==w.title">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </ng-container>
+
             <div class="details">
 
 
-              <div *ngFor="let w of opentext">
-                <ng-container *ngIf="w.due>0 && !w.resolved">
+
+                <ng-container *ngIf="w.due>0 && !w.resolved && w.id==w.id && w.title==w.title">
                   <ng-container *ngIf="w.due==1">
                     <span class="datecolor1">Due in {{w.due}} day</span>
                   </ng-container>
                   <ng-container *ngIf="w.due>1">
                     <span class="datecolor1">Due in {{w.due}} days</span>
                   </ng-container>
-                </ng-container>
-              </div>
+               </ng-container>
+             
 
 
 
-              <div>
-                <div *ngFor="let o of opentext">
-                  <span class="datecolor">{{o.date}}</span>
-
+                <div>
+                  <ng-container *ngIf="w.due>0 && !w.resolved && w.id==w.id && w.title==w.title">
+                    <span class="datecolor">{{w.date}}</span>
+                    </ng-container>
                 </div>
               </div>
 
@@ -169,46 +168,47 @@
         </ng-container>
       </div>
 
-
-      <div *ngFor="let w of opentext">
-        <ng-container *ngIf="w.due<0 && !w.resolved">
+      <br />
+      <div *ngFor="let o of opentext">
+        <ng-container *ngIf="o.due<0 && !o.resolved">
 
           <div class=" opentextcolor2  panel panel-default text-center" style="height:130px;">
 
             <div style="padding-top: 10px;" class="panel-heading">
-              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
-              <div *ngFor="let o of opentext">
+              <ng-container *ngIf="o.id==o.id && !o.resolved && o.title==o.title">
                 <div class="title"> &nbsp;{{o.title}}</div>
-              </div>
+              </ng-container>
 
-              <div *ngFor="let o of opentext">
+              <ng-container *ngIf="o.id==o.id && !o.resolved && o.title==o.title">
                 <div class="name"> &nbsp;{{o.name}}</div>
-              </div>
+              </ng-container>
 
             </div>
+
+
             <div class="details">
 
 
-              <div *ngFor="let w of opentext">
-                <ng-container *ngIf="w.due<0 && !w.resolved">
-                  <ng-container *ngIf="w.due==-1">
-                    <span class="datecolor2">Overdue by {{-w.due}} day</span>
+            
+                <ng-container *ngIf="o.due<0 && !o.resolved && o.id==o.id && o.title==o.title ">
+                  <ng-container *ngIf="o.due==-1">
+                    <span class="datecolor2">Overdue by {{-o.due}} day</span>
                   </ng-container>
-                  <ng-container *ngIf="w.due<-1">
-                    <span class="datecolor2">Overdue by {{-w.due}} days</span>
+                  <ng-container *ngIf="o.due<-1">
+                    <span class="datecolor2">Overdue by {{-o.due}} days</span>
                   </ng-container>
                 </ng-container>
-              </div>
+             
 
 
 
               <div>
-                <div *ngFor="let o of opentext">
+                <ng-container *ngIf="o.id==o.id && !o.resolved && o.title==o.title">
                   <span class="datecolor">{{o.date}}</span>
-
-                </div>
+                </ng-container>
+               
               </div>
 
 
@@ -238,7 +238,7 @@
 
         </ng-container>
       </div>
-
+      <br />
 
       <div *ngFor="let w of opentext">
         <ng-container *ngIf="w.due==0 && !w.resolved">
@@ -246,38 +246,32 @@
           <div class=" opentextcolor3  panel panel-default text-center" style="height:130px;">
 
             <div style="padding-top: 10px;" class="panel-heading">
-              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
-              <div *ngFor="let o of opentext">
-                <div class="title"> &nbsp;{{o.title}}</div>
-              </div>
+              <ng-container *ngIf="w.id==w.id && !w.resolved && w.title==w.title">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </ng-container>
 
-              <div *ngFor="let o of opentext">
-                <div class="name"> &nbsp;{{o.name}}</div>
-              </div>
-
-            </div>
-            <div class="details">
+              <ng-container *ngIf="w.id==w.id && !w.resolved && w.title==w.title">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </ng-container>
 
 
-              <div *ngFor="let w of opentext">
-                <ng-container *ngIf="w.due==0 && !w.resolved">
+              <div class="details">
+                <ng-container *ngIf="w.due==0 && !w.resolved && w.id==w.id && w.title==w.title">
                   <span class="datecolor3">Due Today</span>
                 </ng-container>
-              </div>
 
 
 
-              <div>
-                <div *ngFor="let o of opentext">
-                  <span class="datecolor">{{o.date}}</span>
-
+                <div>
+                  <ng-container *ngIf="!w.resolved && w.id==w.id && w.title==w.title">
+                    <span class="datecolor">{{w.date}}</span>
+                  </ng-container>
                 </div>
+
+
               </div>
-
-
-
             </div>
 
 
@@ -303,30 +297,30 @@
 
         </ng-container>
       </div>
-
+      <br />
       <div *ngFor="let w of opentext">
-        <ng-container *ngIf="w.due<0 && w.resolved">
+        <ng-container *ngIf="w.due<0 && w.resolved && w.id==w.id ">
 
           <div class=" opentextcolor4  panel panel-default text-center" style="height:130px;">
 
             <div style="padding-top: 10px;" class="panel-heading">
-              <img *ngFor="let o of opentext" src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+              <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-              <!-- <h4> &nbsp;Sign Employment Contract</h4>-->
-              <div *ngFor="let o of opentext">
-                <div class="title"> &nbsp;{{o.title}}</div>
-              </div>
+              <ng-container *ngIf="w.id==w.id && w.resolved && w.title==w.title">
+                <div class="title"> &nbsp;{{w.title}}</div>
+              </ng-container>
 
-              <div *ngFor="let o of opentext">
-                <div class="name"> &nbsp;{{o.name}}</div>
-              </div>
+              <ng-container *ngIf="w.id==w.id && w.resolved && w.title==w.title">
+                <div class="name"> &nbsp;{{w.name}}</div>
+              </ng-container>
+
 
             </div>
             <div class="details">
 
 
-              <div *ngFor="let w of opentext">
-                <ng-container *ngIf="w.due<0 && w.resolved">
+            
+                <ng-container *ngIf="w.due<0 && w.resolved && w.id==w.id && w.title==w.title">
                   <ng-container *ngIf="w.due==-1">
                     <span class="datecolor4">Resolved {{-w.due}} day ago</span>
                   </ng-container>
@@ -334,16 +328,15 @@
                     <span class="datecolor4">Resolved {{-w.due}} days ago</span>
                   </ng-container>
                 </ng-container>
-              </div>
+             
 
 
 
-              <div>
-                <div *ngFor="let o of opentext">
-                  <span class="datecolor">{{o.date}}</span>
-
+                <div>
+                  <ng-container *ngIf=" w.resolved && w.id==w.id && w.title==w.title">
+                    <span class="datecolor">{{w.date}}</span>
+                  </ng-container>
                 </div>
-              </div>
 
 
 

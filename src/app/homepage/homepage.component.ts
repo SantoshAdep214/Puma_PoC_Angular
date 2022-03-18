@@ -21,6 +21,8 @@ export class HomepageComponent implements OnInit {
   public count?: Data[];
   public adobe2?: Data[];
   public outlook2?: Data[];
+  public source?: Data[];
+ 
     ShowLoadingIndicator=true;
 
  /* constructor(private router: Router, http: HttpClient) {
@@ -83,18 +85,23 @@ export class HomepageComponent implements OnInit {
       console.log(Object.values(result));
     }, error => console.error(error));
 
-    http.get<Data[]>('/api/').subscribe(result => {
+   /* http.get<Data[]>('/api/').subscribe(result => {
       this.count = result;
       console.log(JSON.stringify(this.count));
       console.log(Object.values(result));
     }, error => console.error(error));
-
+*/
     http.get<Data[]>('/api/Data').subscribe(result => {
       this.outlook2 = result;
       console.log(JSON.stringify(this.outlook2));
       console.log(Object.values(result));
     }, error => console.error(error));
 
+    http.get<Data[]>('/api/Source').subscribe(result => {
+      this.source = result;
+      console.log(JSON.stringify(this.source));
+      console.log(Object.values(result));
+    }, error => console.error(error));
 
   }
 
@@ -151,7 +158,7 @@ export class HomepageComponent implements OnInit {
 
 
 interface Data {
-  id: number;
+  id: string ;
   source: string;
   title: string;
   due: number;
@@ -159,7 +166,7 @@ interface Data {
   imageUrl: string;
   name: string;
   date: string;
-
+ 
   workdaycount: number;
   adobecount: number;
   sapcount: number;

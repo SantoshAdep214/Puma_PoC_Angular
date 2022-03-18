@@ -229,7 +229,7 @@ export class DataComponent implements OnInit {
 }
 
 interface Data {
-  id: number;
+  id: string;
   source: string;
   title: string;
   title2: string;

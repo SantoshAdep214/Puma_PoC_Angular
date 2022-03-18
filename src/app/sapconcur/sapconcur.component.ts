@@ -50,11 +50,17 @@ export class SAPConcurComponent implements OnInit {
   currentEvents: EventApi[] = [];
 
   public sapconcur?: SapConcur[];
-
+  public count?: SapConcur[];
   constructor(private ngxService: NgxUiLoaderService, private router: Router, http: HttpClient) {
     http.get<SapConcur[]>('/api/SAPConcur').subscribe(result => {
       this.sapconcur= result;
       console.log(JSON.stringify(this.sapconcur));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<SapConcur[]>('/api/Count').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
       console.log(Object.values(result));
     }, error => console.error(error));
   }
@@ -166,7 +172,7 @@ export class SAPConcurComponent implements OnInit {
 
 
 interface SapConcur {
-  id: number;
+  id: string;
   source: string;
   title: string;
   due: number;
@@ -174,5 +180,5 @@ interface SapConcur {
   imageUrl: string;
   name: string;
   date: string;
-
+  count: number;
 }

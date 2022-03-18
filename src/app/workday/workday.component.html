@@ -177,26 +177,27 @@
   <div class=".container-lg">
 
     <div *ngFor="let w of workday">
-      <ng-container *ngIf="w.due>0 && !w.resolved">
+      <ng-container *ngIf="w.due>0 && !w.resolved && w.id==w.id && w.title==w.title">
 
         <div class=" workdaycolor panel panel-default text-center" style="height:130px;">
 
           <div style="padding-top: 10px;" class="panel-heading">
 
-            <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-            <div *ngFor="let w of workday">
-              <div class="title"> &nbsp;{{w.title}}</div>
-            </div>
+            <img src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-            <div *ngFor="let w of workday">
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title ">
+              <div class="title"> &nbsp;{{w.title}}</div>
+            </ng-container>
+
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title ">
               <div class="name"> &nbsp;{{w.name}}</div>
-            </div>
+          </ng-container>
 
           </div>
           <div class="details">
 
-            <div *ngFor="let w of workday">
-              <ng-container *ngIf="w.due>0 && !w.resolved">
+           
+              <ng-container *ngIf="!w.resolved && w.id==w.id && w.title==w.title">
                 <ng-container *ngIf="w.due==1">
                   <span class="datecolor1">Due in {{w.due}} day</span>
                 </ng-container>
@@ -204,13 +205,13 @@
                   <span class="datecolor1">Due in {{w.due}} days</span>
                 </ng-container>
               </ng-container>
-            </div>
+            
 
-            <div>
-              <div *ngFor="let d of workday">
-                <span class="datecolor">{{d.date}}</span>
+              <div>
+                <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title ">
+                  <span class="datecolor">{{w.date}}</span>
 
-              </div>
+              </ng-container>
             </div>
 
 
@@ -239,45 +240,46 @@
         </div>
       </ng-container>
     </div>
-
+    <br />
     <div *ngFor="let w of workday">
-      <ng-container *ngIf="w.due<0 && !w.resolved">
+      <ng-container *ngIf="w.due <0 && !w.resolved && w.id==w.id && w.title==w.title">
 
         <div class=" workdaycolor1 panel panel-default text-center" style="height:130px;">
 
           <div style="padding-top: 10px;" class="panel-heading">
 
-            <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-            <div *ngFor="let w of workday">
-              <div class="title"> &nbsp;{{w.title}}</div>
-            </div>
+            <img src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-            <div *ngFor="let w of workday">
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title ">
+              <div class="title"> &nbsp;{{w.title}}</div>
+            </ng-container>
+
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title ">
               <div class="name"> &nbsp;{{w.name}}</div>
-            </div>
+          </ng-container>
 
           </div>
           <div class="details">
 
 
-            <div *ngFor="let w of workday">
-              <ng-container *ngIf="w.due<0 && !w.resolved">
+           
+              <ng-container *ngIf="w.due<0 && !w.resolved && w.id==w.id && w.title==w.title">
                 <ng-container *ngIf="w.due==-1">
-                  <span class="datecolor2">Overdue by {{w.due}} day</span>
+                  <span class="datecolor2">Overdue by {{-w.due}} day</span>
                 </ng-container>
                 <ng-container *ngIf="w.due<-1">
-                  <span class="datecolor2">Overdue by {{w.due}} days</span>
+                  <span class="datecolor2">Overdue by {{-w.due}} days</span>
                 </ng-container>
               </ng-container>
-            </div>
+           
 
 
 
             <div>
-              <div *ngFor="let d of workday">
-                <span class="datecolor">{{d.date}}</span>
+              <ng-container *ngIf="!w.resolved && w.id==w.id && w.title==w.title ">
+                <span class="datecolor">{{w.date}}</span>
 
-              </div>
+              </ng-container>
             </div>
 
 
@@ -306,41 +308,39 @@
         </div>
       </ng-container>
     </div>
-
+    <br />
 
     <div *ngFor="let w of workday">
-      <ng-container *ngIf="w.due==0 && !w.resolved">
+      <ng-container *ngIf="w.due==0 && !w.resolved && w.id==w.id && w.title==w.title">
 
         <div class=" workdaycolor2 panel panel-default text-center" style="height:130px;">
 
           <div style="padding-top: 10px;" class="panel-heading">
 
-            <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-            <div *ngFor="let w of workday">
+            <img src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title">
               <div class="title"> &nbsp;{{w.title}}</div>
-            </div>
+            </ng-container>
 
-            <div *ngFor="let w of workday">
+            <ng-container *ngIf=" !w.resolved && w.id==w.id && w.title==w.title">
               <div class="name"> &nbsp;{{w.name}}</div>
-            </div>
+          </ng-container>
 
           </div>
           <div class="details">
+
            
-
-
-            <div *ngFor="let w of workday">
-              <ng-container *ngIf="w.due==0 && !w.resolved">
+              <ng-container *ngIf="w.due==0 && !w.resolved && w.id==w.id && w.title==w.title">
                 <span class="datecolor3">Due Today</span>
               </ng-container>
-            </div>
+         
 
-            <div>
-              <div *ngFor="let d of workday">
-                <span class="datecolor">{{d.date}}</span>
+              <div>
 
+                <ng-container *ngIf="w.due==0 && !w.resolved && w.id==w.id && w.title==w.title">
+                  <span class="datecolor">{{w.date}}</span>
+                  </ng-container>
               </div>
-            </div>
 
 
 
@@ -368,44 +368,42 @@
         </div>
       </ng-container>
     </div>
-
+    <br />
     <div *ngFor="let w of workday">
-      <ng-container *ngIf="w.due<0 && w.resolved">
+      <ng-container *ngIf="w.due<0 && w.resolved && w.id==w.id && w.title==w.title">
 
         <div class="workdaycolor3 panel panel-default text-center" style="height:130px;">
 
           <div style="padding-top: 10px;" class="panel-heading">
 
-            <img *ngFor="let a of workday" src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
-            <div *ngFor="let w of workday">
-              <div class="title"> &nbsp;{{w.title}}</div>
-            </div>
+            <img  src="../../assets/Image/workday.png" class="rounded float-left" alt="logo" height="25cm" width="25cm">
 
-            <div *ngFor="let w of workday">
+            <ng-container *ngIf="w.id==w.id && w.title==w.title && w.resolved">
+              <div class="title"> &nbsp;{{w.title}}</div>
+
+
               <div class="name"> &nbsp;{{w.name}}</div>
-            </div>
+            </ng-container>
 
           </div>
           <div class="details">
 
-            <div *ngFor="let w of workday">
-              <ng-container *ngIf="w.due<0 && w.resolved">
-                <ng-container *ngIf="w.due==-1">
-                  <span class="datecolor4">Resolved {{-w.due}} day ago</span>
-                </ng-container>
-                <ng-container *ngIf="w.due<-1">
-                  <span class="datecolor4">Resolved {{-w.due}} days ago</span>
-                </ng-container>
+            
+            <ng-container *ngIf="w.due<0 && w.resolved && w.title==w.title && w.id==w.id">
+              <ng-container *ngIf="w.due==-1">
+                <span class="datecolor4">Resolved {{-w.due}} day ago</span>
               </ng-container>
-            </div>
+              <ng-container *ngIf="w.due<-1">
+                <span class="datecolor4">Resolved {{-w.due}} days ago</span>
+              </ng-container>
 
-            <div>
-              <div *ngFor="let d of workday">
-                <span class="datecolor">{{d.date}}</span>
+
+
+              <div>
+                <span class="datecolor">{{w.date}}</span>
 
               </div>
-            </div>
-
+            </ng-container>
 
 
           </div>

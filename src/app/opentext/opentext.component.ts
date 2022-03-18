@@ -48,7 +48,7 @@ export class OpentextComponent implements OnInit {
   currentEvents: EventApi[] = [];
 
   public opentext?: Opentext[];
-
+  public count?: Opentext[];
   constructor(private ngxService: NgxUiLoaderService, private router: Router, http: HttpClient) {
 
     http.get<Opentext[]>('/api/Opentext').subscribe(result => {
@@ -57,6 +57,11 @@ export class OpentextComponent implements OnInit {
       console.log(Object.values(result));
     }, error => console.error(error));
 
+    http.get<Opentext[]>('/api/Count').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
+      console.log(Object.values(result));
+    }, error => console.error(error));
 
   }
   ngOnInit(): void {
@@ -163,7 +168,7 @@ export class OpentextComponent implements OnInit {
 }
 
 interface Opentext {
-  id: number;
+  id: string;
   source: string;
   title: string;
   due: number;
@@ -171,4 +176,5 @@ interface Opentext {
   imageUrl: string;
   name: string;
   date: string;
+  count: number;
 }

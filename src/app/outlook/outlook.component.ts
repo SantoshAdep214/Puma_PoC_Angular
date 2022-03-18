@@ -21,7 +21,7 @@ export class OutlookComponent implements OnInit {
   icon1 = "eye";
   icon2 = "eye";
   icon3 = "eye";
-
+ 
   public today: Date = new Date();
   public currentDate: String = (this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear());
 
@@ -50,7 +50,8 @@ export class OutlookComponent implements OnInit {
 
   public outlook?: Outlook[];
   public outlookdata?: Outlook[];
-
+  public count?: Outlook[];
+  public source?: Outlook[];
   constructor(private ngxService: NgxUiLoaderService, private router: Router, http: HttpClient) {
     http.get<Outlook[]>('/api/Outlook').subscribe(result => {
       this.outlook = result;
@@ -61,6 +62,18 @@ export class OutlookComponent implements OnInit {
     http.get<Outlook[]>('/api/Data').subscribe(result => {
       this.outlookdata = result;
       console.log(JSON.stringify(this.outlookdata));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<Outlook[]>('/api/Count').subscribe(result => {
+      this.count = result;
+      console.log(JSON.stringify(this.count));
+      console.log(Object.values(result));
+    }, error => console.error(error));
+
+    http.get<Outlook[]>('/api/Source').subscribe(result => {
+      this.source = result;
+      console.log(JSON.stringify(this.source));
       console.log(Object.values(result));
     }, error => console.error(error));
   }
@@ -176,5 +189,7 @@ interface Outlook {
   title: string;
   title2: string;
   imageUrl: string;
-  resolved: boolean;   
+  resolved: boolean;
+  count: number;
+  id: string;
 }

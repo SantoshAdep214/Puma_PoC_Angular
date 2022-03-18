@@ -55,7 +55,7 @@ export class WorkdayComponent implements OnInit {
                                                             this.workday = result;
                                                             console.log(JSON.stringify(this.workday));
                                                             console.log(Object.values(result));
-   }, error => console.error(error));
+                                                            }, error => console.error(error));
 
     http.get<Workday[]>('/api/Count').subscribe(result => {
       this.count = result;

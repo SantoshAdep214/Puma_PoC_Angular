@@ -45,46 +45,71 @@
 
   <div class="card-columns">
     <div class="card" *ngFor="let c of count">
-    
-        <div class="card-body text-center" (click)="Workday()">
 
-          <img src="../../assets/Image/workday.png"
-               class="rounded-circle float-left " alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
+      <div class="card-body text-center" (click)="Workday()">
+
+        <img src="../../assets/Image/workday.png"
+             class="rounded-circle float-left " alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
 
 
+        <div *ngFor="let w of workday">
+
+          <ng-container *ngIf=" w.id=='123' ">
+            <h5 class="card-title">{{w.source}} </h5>
+            </ng-container>
+        </div>
+
+
+      <!--  <div *ngFor="let c of count">
+          <div *ngFor="let w of workday">
+            <ng-container *ngIf="w.resolved">
+              <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount-1}} task</h6>
+
+              <ng-container *ngIf="c.workdaycount-1>0">
+                <div class="NotificationCount">{{c.workdaycount-1}} </div>
+              </ng-container>
+
+            </ng-container>
+            <ng-container *ngIf="!w.resolved">
+              <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount}} task</h6>
+              <div class="NotificationCount">{{c.workdaycount}} </div>
+
+            </ng-container>
+          </div>
+        </div>-->
+        <div *ngFor="let c of count">
           <div *ngFor="let w of workday">
 
+            <ng-container *ngIf=" w.id=='123' && c.workdaycount>0 && w.resolved">
 
-            <h5 class="card-title">{{w.source}} </h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{w.workdaycount-1}} task</h6>
+              <ng-container *ngIf="c.workdaycount-1>0">
+                <div class="NotificationCount">{{c.workdaycount-1}} </div>
+              </ng-container>
+            </ng-container>
+
+
+            <ng-container *ngIf="w.id=='123' && c.workdaycount==0">
+              <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount}} task</h6>
+            </ng-container>
+
+
+
+            <ng-container *ngIf="!w.resolved && w.id=='123' && c.workdaycount>0 ">
+              <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount}} task</h6>
+              <div class="NotificationCount">{{c.workdaycount}} </div>
+
+            </ng-container>
 
           </div>
-
-
-          <div *ngFor="let c of count">
-            <div *ngFor="let w of workday">
-                  <ng-container *ngIf="w.resolved">
-                    <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount-1}} task</h6>
-
-                    <ng-container *ngIf="c.workdaycount-1>0">
-                      <div class="NotificationCount">{{c.workdaycount-1}} </div>
-                    </ng-container>
-                
-                  </ng-container>
-                  <ng-container *ngIf="!w.resolved">
-                    <h6 class="card-subtitle mb-2 text-muted">{{c.workdaycount}} task</h6>
-                    <div class="NotificationCount">{{c.workdaycount}} </div>
-                    
-                  </ng-container>
-              </div>
-                </div>
-        
-         
-     
         </div>
-      
+
+
+      </div>
+
     </div>
 
-    
+
 
     <div class="card">
       <div class=" card-body text-center" (click)="Opentext()">
@@ -92,76 +117,67 @@
         <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
 
         <div *ngFor="let o of opentext">
-          <h5 class="card-title">{{o.source}} </h5>
+          <ng-container *ngIf="o.id=='111'">
+            <h5 class="card-title">{{o.source}} </h5>
+          </ng-container>
         </div>
 
-        <div *ngFor="let c of count">
-          <div *ngFor="let o of opentext">
-            <ng-container *ngIf="o.resolved">
+        <div *ngFor="let c of count ">
+          <div *ngFor="let a of opentext">
+
+
+            <ng-container *ngIf="a.id=='111' &&  c.opentextcount==0">
               <h6 class="card-subtitle mb-2 text-muted">{{c.opentextcount}} task</h6>
-
-              <ng-container *ngIf="c.opentextcount-1>0">
-                <div class="NotificationCount">{{c.opentextcount-1}} </div>
-              </ng-container>
-
             </ng-container>
-            <ng-container *ngIf="!o.resolved">
+
+
+
+            <ng-container *ngIf=" a.id=='111' && c.opentextcount>0 ">
               <h6 class="card-subtitle mb-2 text-muted">{{c.opentextcount}} task</h6>
               <div class="NotificationCount">{{c.opentextcount}} </div>
 
             </ng-container>
-            </div>
-          </div>
 
+          </div>
         </div>
+
+      </div>
 
     </div>
 
     <div class="card">
+
       <div class="card-body text-center" (click)="Adobesign()">
         <img src="../../assets/Image/adobesign.png"
              class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
 
-        <div *ngFor="let a of adobe">
-          <h5 class="card-title">{{a.source}} </h5>
-        </div>
+        <ng-container *ngFor="let a of adobe">
+          <ng-container *ngIf="a.id=='456' ">
+            <h5 class="card-title">{{a.source}} </h5>
+          </ng-container>
+        </ng-container>
 
-        <div *ngFor="let c of count">
+
+        <div *ngFor="let c of count ">
           <div *ngFor="let a of adobe">
-            <div *ngFor="let a2 of adobe2">
 
-              <ng-container *ngIf="a.resolved && a2.resolved">
-                <h6 class="card-subtitle mb-2 text-muted">{{c.adobecount-2}} task</h6>
-                <ng-container *ngIf="c.adobecount-2>0">
-                  <div class="NotificationCount">{{c.adobecount-2}} </div>
-                </ng-container>
-              </ng-container>
 
-              <ng-container *ngIf="a.resolved && !a2.resolved">
-                <h6 class="card-subtitle mb-2 text-muted">{{c.adobecount-1}} task</h6>
-                <ng-container *ngIf="c.adobecount-1>0">
-                  <div class="NotificationCount">{{c.adobecount-1}} </div>
-                </ng-container>
+              <ng-container *ngIf="a.id=='456' &&  c.adobecount==0">
+                <h6 class="card-subtitle mb-2 text-muted">{{c.adobecount}} task</h6>
               </ng-container>
 
 
-              <ng-container *ngIf="!a.resolved && a2.resolved">
-                <h6 class="card-subtitle mb-2 text-muted">{{c.adobecount-1}} task</h6>
-                    <ng-container *ngIf="c.adobecount-1>0">
-                  <div class="NotificationCount">{{c.adobecount-1}} </div>
-                </ng-container>
-              </ng-container>
 
-              <ng-container *ngIf="!a.resolved && !a2.resolved">
+              <ng-container *ngIf=" a.id=='456' && c.adobecount>0 ">
                 <h6 class="card-subtitle mb-2 text-muted">{{c.adobecount}} task</h6>
                 <div class="NotificationCount">{{c.adobecount}} </div>
 
-              </ng-container>
-            </div>
-            </div>
-          </div>
+              </ng-container>  
 
+          </div>
         </div>
+      </div>
+
     </div>
 
     <div class="card">
@@ -183,24 +199,27 @@
              class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
 
         <div *ngFor="let s of sapconcur">
-          <h5 class="card-title">{{s.source}} </h5>
+          <ng-container *ngIf="s.id=='555'">
+            <h5 class="card-title">{{s.source}} </h5>
+          </ng-container>
         </div>
 
-        <div *ngFor="let c of count">
-          <div *ngFor="let s of sapconcur">
-            <ng-container *ngIf="s.resolved">
-              <h6 class="card-subtitle mb-2 text-muted">{{c.sapcount-1}} task</h6>
+        <div *ngFor="let c of count ">
+          <div *ngFor="let a of sapconcur">
 
-              <ng-container *ngIf="c.sapcount-1>0">
-                <div class="NotificationCount">{{c.sapcount-1}} </div>
-              </ng-container>
 
+            <ng-container *ngIf="a.id=='555' &&  c.sapcount==0">
+              <h6 class="card-subtitle mb-2 text-muted">{{c.sapcount}} task</h6>
             </ng-container>
-            <ng-container *ngIf="!s.resolved">
+
+
+
+            <ng-container *ngIf=" a.id=='555' && c.sapcount>0 ">
               <h6 class="card-subtitle mb-2 text-muted">{{c.sapcount}} task</h6>
               <div class="NotificationCount">{{c.sapcount}} </div>
 
             </ng-container>
+
           </div>
         </div>
       </div>
@@ -213,66 +232,49 @@
              class="float-left" alt="logo" style="margin-bottom:20px;" height="60cm" width="60cm">
 
         <div *ngFor="let o of outlook">
-          <h5 class="card-title">{{o.source}} </h5>
-        </div>
-        <div *ngFor="let c of count">
-          <div *ngFor="let o of outlook">
-            <div *ngFor="let o2 of outlook2">
+          <ng-container *ngIf="o.id=='214'">
+            <h5 class="card-title">{{o.source}} </h5>
+          </ng-container>
+          </div>
 
-              <ng-container *ngIf="o.resolved && o2.resolved">
-                <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount-2}} task</h6>
-                <ng-container *ngIf="c.outlookcount-2>0">
-                  <div class="NotificationCount">{{c.outlookcount-2}} </div>
-                </ng-container>
-              </ng-container>
+          <div *ngFor="let c of count ">
+            <div *ngFor="let a of outlook">
 
-              <ng-container *ngIf="o.resolved && !o2.resolved">
+             <!-- <ng-container *ngIf=" a.id=='0214' && c.outlookcount>0 && a.resolved">
+
                 <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount-1}} task</h6>
                 <ng-container *ngIf="c.outlookcount-1>0">
                   <div class="NotificationCount">{{c.outlookcount-1}} </div>
                 </ng-container>
               </ng-container>
+-->
 
-
-              <ng-container *ngIf="!o.resolved && o2.resolved">
-                <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount-1}} task</h6>
-                <ng-container *ngIf="c.outlookcount-1>0">
-                  <div class="NotificationCount">{{c.outlookcount-1}} </div>
-                </ng-container>
+              <ng-container *ngIf="a.id=='0214' &&  c.outlookcount==0">
+                <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount}} task</h6>
               </ng-container>
 
-              <ng-container *ngIf="!o.resolved && !o2.resolved">
+
+
+              <ng-container *ngIf="a.id=='0214' && c.outlookcount>0 ">
                 <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount}} task</h6>
                 <div class="NotificationCount">{{c.outlookcount}} </div>
 
               </ng-container>
+
             </div>
           </div>
         </div>
+      </div>
 
       </div>
+    
+
+  <!--
+    <div *ngFor="let s of source">
+      <h1>nn</h1>
+      <span>{{s.name}}</span>
     </div>
-  </div>
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  -->
   <!--  https://stackoverflow.com/questions/1853662/how-to-show-page-loading-div-until-the-page-has-finished-loading
 
     https://loading.io/css/ --for spinners
@@ -330,3 +332,16 @@
       </div>
     </div>
   </div>-->
+  <!--
+  <div *ngFor="let a of adobe">
+    <div *ngFor="let c of count">
+      <ng-container *ngIf="a.id=='456'  &&  c.adobecount==0">
+        <h1>yyyyyyyyyyyyyyyyyyyyyyy</h1>
+        <h1>{{a.id}}</h1>
+        hhhhhhhh>hhhhhhhh
+      </ng-container>
+
+      </div>
+    </div>
+  -->
+  
