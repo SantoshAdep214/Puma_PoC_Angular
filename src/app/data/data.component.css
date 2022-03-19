@@ -227,8 +227,9 @@ button {
 
 }
 
-btn{
-
+.btngroup {
+  position: relative;
+  right: 60px;
 }
 .panel button {
  
