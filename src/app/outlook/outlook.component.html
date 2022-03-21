@@ -98,10 +98,10 @@
 
   <div id="displaystyle" class="container-fluid">
 
-    <div class=".container-lg">
+    <div class=".container-lg" >
 
       <div *ngFor="let o of outlook">
-        <ng-container *ngIf="o.due>0 && !o.resolved">
+        <ng-container *ngIf="o.due>0 && !o.resolved && o.id==o.id && o.title==o.title">
 
           <div class=" outlookcolor1 panel panel-default text-center" style="height:130px;">
 
@@ -156,10 +156,7 @@
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+              <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius:8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -172,15 +169,15 @@
             </div>
 
           </div>
+          <ng-container *ngIf="o.due>0 && !o.resolved && o.id==o.id && o.title==o.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
+</div>
 
-      </div>
-
-      <br />
+     
 
       <div *ngFor="let o of outlook">
-        <ng-container *ngIf="o.due<0 && !o.resolved">
+        <ng-container *ngIf="o.due<0 && !o.resolved && o.id==o.id && o.title==o.title">
 
           <div class=" outlookcolor2 panel panel-default text-center" style="height:130px;">
 
@@ -208,7 +205,7 @@
 
             <div class="details">
               <!--
-          <div *ngFor="let w of outlook">-->
+      <div *ngFor="let w of outlook">-->
               <ng-container *ngIf="o.due<0 && !o.resolved && o.id==o.id && o.title==o.title">
                 <ng-container *ngIf="o.due==-1">
                   <span class="datecolor2">overdue by {{-o.due}} day</span>
@@ -238,7 +235,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
@@ -253,16 +250,15 @@
             </div>
 
           </div>
+          <ng-container *ngIf="o.due<0 && !o.resolved && o.id==o.id && o.title==o.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
+</div>
 
-      </div>
-
-      <br />
-
+    
 
       <div *ngFor="let o of outlook">
-        <ng-container *ngIf="o.id==o.id && o.due==0 && !o.resolved">
+        <ng-container *ngIf="o.id==o.id && o.due==0 && !o.resolved && o.id==o.id && o.title==o.title">
 
           <div class=" outlookcolor3 panel panel-default text-center" style="height:130px;">
 
@@ -314,7 +310,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
@@ -329,15 +325,15 @@
             </div>
 
           </div>
+          <ng-container *ngIf="o.id==o.id && o.due==0 && !o.resolved && o.id==o.id && o.title==o.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
+</div>
 
-      </div>
-
-      <br />
+      
 
       <div *ngFor="let o of outlook">
-        <ng-container *ngIf="o.due<0 && o.resolved">
+        <ng-container *ngIf="o.due<0 && o.resolved && o.id==o.id && o.title==o.title">
 
           <div class=" outlookcolor4 panel panel-default text-center" style="height:130px;">
 
@@ -382,7 +378,7 @@
                 </ng-container>
 
                 <!--
-            </div>-->
+        </div>-->
               </div>
 
 
@@ -394,7 +390,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-            <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
@@ -409,10 +405,10 @@
             </div>
 
           </div>
+          <ng-container *ngIf="o.due<0 && o.resolved && o.id==o.id && o.title==o.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
-
-      </div>
+</div>
 
     </div>
 
@@ -426,7 +422,7 @@
 
   </div>
 
-  <br />
+
 
   <!-- <div id="displaystyle" class="container-fluid">
 
@@ -801,24 +797,7 @@
 
    </div>-->
 
- <!-- <div *ngFor="let o of outlook">
-    <ng-container *ngIf="o.id==o.id && !o.resolved">
-      <h1>hhhhhhhhhhhhhhhhhh</h1>
-      <span>{{o.id}}</span>
-      <span>{{o.name}}</span>
-      <span>{{o.title}}</span>
-    </ng-container>
-  </div>
-
-  <h1>...................................................</h1>
-  <div *ngFor="let o of outlook">
-    <ng-container *ngIf="o.id==o.id && o.resolved">
-      <h1>hhhhhhhhhhhhhhhhhh</h1>
-      <span>{{o.id}}</span>
-      <span>{{o.name}}</span>
-      <span>{{o.title}}</span>
-    </ng-container>
-  </div>-->
+ 
 
 
 

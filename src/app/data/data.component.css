@@ -7,8 +7,32 @@
   box-shadow: 0 5px 15px #bdbaba;
   cursor: pointer;
   border-radius: 22px;
+ 
   
 }
+/*.container1{
+  margin-top: 20px;
+  
+}
+.workdaycard {
+
+  height: 134px;
+}
+.adobecard {
+    
+   height:337px;
+}
+.opentextcard {
+  
+
+  height:157px;
+}
+
+.outlookcard {
+
+ height:265px;
+}*/
+
 
 .workdaycolor {
   border-left: 12px solid rgb(0,77,77);
@@ -247,11 +271,9 @@ button {
 }
 
 .card-container {
-  margin-top:20px;
+  margin-top:30px;
 }
-.container {
-  margin-top: 20px;
-}
+
 
 /*due date css*/
 .details {
@@ -387,7 +409,7 @@ b { /* used for event dates/times */
 
 full-calendar {
   width: 777px;
-  top: -110px;
+  top: -90px;
   border-radius: 15px;
   height: 450px;
   position: relative;

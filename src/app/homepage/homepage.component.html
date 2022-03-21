@@ -117,7 +117,7 @@
         <img src="../../assets/Image/opentext.png" class="rounded float-left" alt="logo" style="margin-bottom:20px;" height="60px" width="60px">
 
         <div *ngFor="let o of opentext">
-          <ng-container *ngIf="o.id=='111'">
+          <ng-container *ngIf="o.id=='246'">
             <h5 class="card-title">{{o.source}} </h5>
           </ng-container>
         </div>
@@ -126,13 +126,13 @@
           <div *ngFor="let a of opentext">
 
 
-            <ng-container *ngIf="a.id=='111' &&  c.opentextcount==0">
+            <ng-container *ngIf="a.id=='246' &&  c.opentextcount==0">
               <h6 class="card-subtitle mb-2 text-muted">{{c.opentextcount}} task</h6>
             </ng-container>
 
 
 
-            <ng-container *ngIf=" a.id=='111' && c.opentextcount>0 ">
+            <ng-container *ngIf=" a.id=='246' && c.opentextcount>0 ">
               <h6 class="card-subtitle mb-2 text-muted">{{c.opentextcount}} task</h6>
               <div class="NotificationCount">{{c.opentextcount}} </div>
 
@@ -249,13 +249,13 @@
               </ng-container>
 -->
 
-              <ng-container *ngIf="a.id=='0214' &&  c.outlookcount==0">
+              <ng-container *ngIf="a.id=='214' &&  c.outlookcount==0">
                 <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount}} task</h6>
               </ng-container>
 
 
 
-              <ng-container *ngIf="a.id=='0214' && c.outlookcount>0 ">
+              <ng-container *ngIf="a.id=='214' && c.outlookcount>0 ">
                 <h6 class="card-subtitle mb-2 text-muted">{{c.outlookcount}} task</h6>
                 <div class="NotificationCount">{{c.outlookcount}} </div>
 

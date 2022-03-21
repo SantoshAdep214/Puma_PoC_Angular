@@ -7,8 +7,14 @@
   box-shadow: 0 5px 15px #bdbaba;
   cursor: pointer;
   border-radius: 22px;
+
 }
 
+
+.container {
+ margin-top:25px;
+ 
+}
 /*.workdaycolor {
   border-left: 12px solid red;
 }
@@ -211,9 +217,7 @@ button {
 .btn-top{
    margin-top:20px;
 }
-.container {
- margin-top:25px;
-}
+
 
 
 

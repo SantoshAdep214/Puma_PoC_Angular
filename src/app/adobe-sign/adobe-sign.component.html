@@ -99,7 +99,7 @@
 
       <div *ngFor="let a of adobe">
 
-        <ng-container *ngIf="a.due>0 && !a.resolved">
+        <ng-container *ngIf="a.due>0 && !a.resolved && a.id==a.id && a.title==a.title">
 
           <div class=" adobecolor1 panel panel-default text-center" style="height: 130px; position: relative; top: 0px; ">
 
@@ -109,12 +109,12 @@
 
               <ng-container *ngIf="a.id==a.id && !a.resolved && a.due==a.due && a.title==a.title">
                 <div class="title"> &nbsp;{{a.title}}</div>
-              </ng-container> 
+              </ng-container>
 
 
 
               <ng-container *ngIf="a.id==a.id && !a.resolved && a.due==a.due && a.title==a.title">
-                <div class="name"> &nbsp;{{a.name}}</div> 
+                <div class="name"> &nbsp;{{a.name}}</div>
               </ng-container>
 
 
@@ -151,7 +151,7 @@
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-           
+
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
@@ -159,18 +159,18 @@
                 </div>
               </div>
 
-             <!-- <br><br>-->
+              <!-- <br><br>-->
 
 
             </div>
 
           </div>
 
+          <ng-container *ngIf="a.due>0 && !a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
-      
-      </div>
-      <br />
+</div>
+     
    
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title && a.id==a.id">
@@ -193,20 +193,20 @@
             </div>
             <div class="details">
 
-             
-                <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title">
-                  <ng-container *ngIf="a.due==-1">  <span class="datecolor2">Overdue by {{-a.due}} day</span></ng-container>
-                  <ng-container *ngIf="a.due<-1">  <span class="datecolor2">Overdue by {{-a.due}} days</span></ng-container>
+
+              <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title">
+                <ng-container *ngIf="a.due==-1">  <span class="datecolor2">Overdue by {{-a.due}} day</span></ng-container>
+                <ng-container *ngIf="a.due<-1">  <span class="datecolor2">Overdue by {{-a.due}} days</span></ng-container>
+              </ng-container>
+
+
+              <div>
+
+                <ng-container *ngIf="a.id==a.id && !a.resolved && a.due==a.due && a.title==a.title">
+                  <span class="datecolor">{{a.date}}</span>
                 </ng-container>
-            
 
-                <div>
-
-                  <ng-container *ngIf="a.id==a.id && !a.resolved && a.due==a.due && a.title==a.title">
-                    <span class="datecolor">{{a.date}}</span>
-                  </ng-container>
-
-                </div>
+              </div>
 
 
 
@@ -217,7 +217,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
@@ -226,19 +226,19 @@
                 </div>
               </div>
 
-             <!-- <br><br>-->
+              <!-- <br><br>-->
 
 
             </div>
 
           </div>
 
+          <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title && a.id==a.id"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
-  
-      </div>
+</div>
 
-    <br />
+   
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title">
 
@@ -254,7 +254,7 @@
 
               <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title">
                 <div class="name"> &nbsp;{{a.name}}</div>
-            </ng-container>
+              </ng-container>
 
             </div>
             <div class="details">
@@ -264,7 +264,7 @@
                 <ng-container *ngIf="a.due==0 && !a.resolved">
                   <span class="datecolor3">Due Today</span>
                 </ng-container>
-            </ng-container>
+              </ng-container>
 
 
               <div>
@@ -272,7 +272,7 @@
                 <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title">
                   <span class="datecolor">{{a.date}}</span>
 
-              </ng-container>
+                </ng-container>
               </div>
 
 
@@ -284,7 +284,7 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
                 <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
@@ -293,18 +293,18 @@
                 </div>
               </div>
 
-             <!-- <br><br>-->
+              <!-- <br><br>-->
 
 
             </div>
 
           </div>
 
+          <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
+</div>
 
-     </div>
-    <br />
       
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due<0 && a.resolved && a.id==a.id && a.title==a.title">
@@ -328,23 +328,23 @@
 
             <div class="details">
 
-              
-                <ng-container *ngIf="a.due<0 && a.resolved && a.title==a.title && a.id==a.id">
-                  <ng-container *ngIf="a.due==-1">
-                    <span class="datecolor4">Resolved {{-a.due}} day ago</span>
-                  </ng-container>
-                  <ng-container *ngIf="a.due<-1">
-                    <span class="datecolor4">Resolved {{-a.due}} days ago</span>
-                  </ng-container>
+
+              <ng-container *ngIf="a.due<0 && a.resolved && a.title==a.title && a.id==a.id">
+                <ng-container *ngIf="a.due==-1">
+                  <span class="datecolor4">Resolved {{-a.due}} day ago</span>
                 </ng-container>
-              
+                <ng-container *ngIf="a.due<-1">
+                  <span class="datecolor4">Resolved {{-a.due}} days ago</span>
+                </ng-container>
+              </ng-container>
+
               <div>
 
                 <ng-container *ngIf="a.due<0 && a.resolved && a.title==a.title && a.id==a.id">
                   <span class="datecolor">{{a.date}}</span>
                 </ng-container>
 
-</div>
+              </div>
 
 
 
@@ -354,28 +354,25 @@
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
-
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
 
-             <!-- <br><br>-->
+              <!-- <br><br>-->
 
 
             </div>
 
           </div>
 
+          <ng-container *ngIf="a.due<0 && a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
+          </ng-container>
 
-        </ng-container>
-      
-      </div>
-      <br />
+</div>
+    
 
 
     </div>
