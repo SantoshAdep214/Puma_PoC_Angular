@@ -11,9 +11,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./data.component.css']
 })
 export class DataComponent implements OnInit {
-  showMecalnder: boolean = false;
+  showMecalendar: boolean = false;
   showMesearch: boolean = false;
   showFilter: boolean = false;
+
+  public minDate: Date = new Date("05/05/1177");
+  public maxDate: Date = new Date("05/05/2077");
+  public value: Date = new Date();
+
 
   btnVal = "Show Search";
   calvalue = "Show Calendar";
@@ -36,9 +41,9 @@ export class DataComponent implements OnInit {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    select: this.handleDateSelect.bind(this),
+    /*select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
+    eventsSet: this.handleEvents.bind(this)*/
 
   };
   currentEvents: EventApi[] = [];
@@ -148,7 +153,7 @@ export class DataComponent implements OnInit {
 
 
   calender() {
-    this.showMecalnder = !this.showMecalnder;
+    this.showMecalendar = !this.showMecalendar;
     if (this.calvalue == "Hide Calender" && this.icon1 == "eye-slash") {
       this.calvalue = "Show Calendar";
       this.icon1 = "eye";
@@ -188,7 +193,7 @@ export class DataComponent implements OnInit {
   }
 
 
-
+/*
 
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
@@ -224,7 +229,7 @@ export class DataComponent implements OnInit {
 
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
-  }
+  }*/
 
 }
 

@@ -22,24 +22,19 @@
   </div>
 </div>
 
+
 <br>
 <br>
 <div style="position: relative;padding-left: 132px;" class=".container-lg">
 
-  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="calender()">{{calvalue}}&nbsp; &nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
-  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="search()">
-    {{btnVal}}&nbsp; &nbsp;<i class="fa fa-{{icon2}}"></i>
-  </button>&nbsp;&nbsp;&nbsp; &nbsp;
-  <button type="button" class="btn btn-light" style="border-radius: 8px; height: 50px;" (click)="filter()">{{showfilter}} &nbsp; &nbsp;<i class="fa fa-{{icon3}}"></i></button>
 
-  <button type="button" class="right float-right btn btn-light"
-          style="border-radius: 8px; height: 50px;width:250px;">
-    Show Source Bar &nbsp;
-    <i class='fas fa-angle-right'> </i>
-  </button>
+  <button type="button" class="btn btn-light btn1" (click)="calender()">{{calvalue}}&nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light btn2" (click)="search()">{{btnVal}}&nbsp;<i class="fa fa-{{icon2}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light btn3" (click)="filter()">{{showfilter}} &nbsp;<i class="fa fa-{{icon3}}"></i></button>
+  <button type="button" class="right float-right btn btn-light  btn4">Show Source Bar &nbsp;<i class='fas fa-angle-right'> </i></button>
 
 
-  <h5 *ngIf="showMesearch" style="margin-left: 0px; margin-right: 132px; padding-top:2%">
+  <h5 *ngIf="showMesearch" style="margin-left: -33px; margin-right: 132px; padding-top:2%; width:94%;">
     <!--<span class="glyphicon glyphicon-search"></span>-->
     <div class="form-outline mb-4">
       <input type="search" class="search form-control" placeholder="search..." style="border-radius:10px;">
@@ -47,45 +42,49 @@
     </div>
   </h5>
 
-
-
-  <h5 *ngIf="showFilter">
-    <div class="btn-top form-outline mb-4">
-      Filter By : <button type="button" class=" btn btn-light" style="font-size:small; border-radius:8px;">
+  <ng-container *ngIf="showFilter">
+    <div class="btn-top form-outline xs-4 filterby">
+     <button type="button" class=" btn btn-light btn5 " style="font-size:small; border-radius:8px;">
         Selected Source [1]&nbsp;&nbsp;
         <i class='fas fa-caret-down'></i>
       </button>
 
-      &nbsp;&nbsp;<button type="button" class=" btn btn-light" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
-      <button type="button" class="reset float-right btn btn-light" style="border-radius:8px;"
+      &nbsp;&nbsp;<button type="button" class=" btn btn-light btn6 " style="font-size:small;border-radius:8px;" *ngFor="let c of count">All Tasks [{{c.count}}] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
+      <button type="button" class="reset float-right btn btn-light btn7 " style="border-radius:8px;"
               (click)="ResetAll()">
         Reset All &nbsp;&nbsp;<i class="fa fa-rotate-left" style='color:red'></i>
       </button>
     </div>
-  </h5>
+  </ng-container>
 
-  <div class="container-fluid">
+
+  <div class="container-fluid cal">
+
     <div class="row">
-      <h5 *ngIf="ShowMeCalender">
-        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:0px;">
-          <div class="container">
+
+      <div class="row">
+        <div *ngIf="ShowMeCalender">
+          <div class="float-left col-sm-6" style="margin-top:-110px; position:relative; right:0px;">
+            <div class="container">
 
 
-            <div class='demo-app-main'>
+              <div class='demo-app-main'>
 
-              <h6 class="currentdate" style="position:relative;top:150px;left:-145px; font-weight:bold">Today is : {{currentDate}} </h6>
-              <full-calendar *ngIf='calendarVisible'
-                             [options]='calendarOptions'></full-calendar>
+                <div class="currentdate" style="position:relative;top:150px;left:-105px; font-weight:bold">Today is : {{currentDate}} </div>
+                <!--  <full-calendar *ngIf='calendarVisible'
+                                 [options]='calendarOptions'></full-calendar>-->
+                <ejs-calendar 
+                                  id=calendar [value]='value' [min]='minDate' [max]='maxDate'> </ejs-calendar>
+              </div>
             </div>
+
           </div>
 
-
-
-
         </div>
+      </div>
 
-      </h5>
     </div>
+
   </div>
 
 </div>
@@ -151,27 +150,23 @@
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <div class=" buttonright btn-group adobebtns" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light" style="border-radius:8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
-
-              <!-- <br><br>-->
-
 
             </div>
 
           </div>
 
           <ng-container *ngIf="a.due>0 && !a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
-          </ng-container>
+        </ng-container>
 
-</div>
-     
-   
+      </div>
+
+
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title && a.id==a.id">
 
@@ -213,20 +208,16 @@
             </div>
 
 
-            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+            <div class="border-btn-light panel-body container-fluid " style="position:relative;top: -30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-                <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 20px; border-radius: 8px;" class="btn btn-light">. . .</button>
 
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
+                <div class=" adobebtns btn-group" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light adobebtns1" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                  <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
+                  <button type="button" class="btn btn-light adobebtns2" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
                 </div>
               </div>
-
-              <!-- <br><br>-->
 
 
             </div>
@@ -234,11 +225,11 @@
           </div>
 
           <ng-container *ngIf="a.due<0 && !a.resolved && a.title==a.title && a.id==a.id"><br /></ng-container>
-          </ng-container>
+        </ng-container>
 
-</div>
+      </div>
 
-   
+
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title">
 
@@ -284,9 +275,9 @@
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+                <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <div class=" buttonright btn-group adobebtns" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -301,11 +292,11 @@
           </div>
 
           <ng-container *ngIf="a.due==0 && !a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
-          </ng-container>
+        </ng-container>
 
-</div>
+      </div>
 
-      
+
       <div *ngFor="let a of adobe">
         <ng-container *ngIf="a.due<0 && a.resolved && a.id==a.id && a.title==a.title">
 
@@ -353,8 +344,8 @@
 
             <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
               <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
-               <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 20px; border-radius: 8px;" class="btn btn-light">. . .</button>
+                <div class=" adobebtns btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -369,14 +360,42 @@
           </div>
 
           <ng-container *ngIf="a.due<0 && a.resolved && a.id==a.id && a.title==a.title"><br /></ng-container>
-          </ng-container>
+        </ng-container>
 
-</div>
-    
+      </div>
+
 
 
     </div>
   </div>
-  </div>
+</div>
 
 
+
+<!--<div class="container-fluid cal">
+
+    <div class="row">
+
+      <div class="row">
+        <h5 *ngIf="ShowMeCalender">
+          <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:0px;">
+            <div class="container">
+
+
+              <div class='demo-app-main'>
+
+                <h6 class="currentdate" style="position:relative;top:150px;left:-145px; font-weight:bold">Today is : {{currentDate}} </h6>
+              <!--  <full-calendar *ngIf='calendarVisible'
+                               [options]='calendarOptions'></full-calendar>
+<ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'> </ejs-calendar>
+              </div>
+            </div>
+
+          </div>
+
+        </h5>
+      </div>
+
+    </div>
+
+  </div>-->

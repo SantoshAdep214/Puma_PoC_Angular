@@ -170,3 +170,50 @@
  position:relative;
  right:30px;
 }
+
+
+
+/*man logo*/
+@media (min-width:300px) and (max-width:500px) {
+
+  .rounded-circle {
+    position: absolute;
+    right: 50px;
+  }
+}
+
+
+
+/*task text*/
+@media (min-width:300px) and (max-width:500px) {
+
+  .Name {
+    position: absolute;
+    right: 150px;
+    font-size: 7px;
+    top: 30px;
+  }
+}
+
+
+
+
+/*puma logo*/
+@media (min-width:300px) and (max-width:500px) {
+  .App-logo {
+    position: absolute;
+   
+    top: 0px;
+    right: 250px;
+  }
+}
+
+
+
+@media (min-width:300px) and (max-width:500px) {
+  .btn-secondary {
+    position: absolute;
+    right:10px;
+  }
+}
+

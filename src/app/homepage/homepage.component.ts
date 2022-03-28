@@ -22,7 +22,7 @@ export class HomepageComponent implements OnInit {
   public adobe2?: Data[];
   public outlook2?: Data[];
   public source?: Data[];
- 
+  x: string = "";
     ShowLoadingIndicator=true;
 
  /* constructor(private router: Router, http: HttpClient) {
@@ -103,6 +103,7 @@ export class HomepageComponent implements OnInit {
       console.log(Object.values(result));
     }, error => console.error(error));
 
+    
   }
 
   ngOnInit(): void {
@@ -125,6 +126,7 @@ export class HomepageComponent implements OnInit {
     setTimeout(() => {
       this.ngxService.stopLoader("loader-01");
     }, 0);
+
   }
 
 
@@ -153,6 +155,7 @@ export class HomepageComponent implements OnInit {
 
   pumahome() {
     this.router.navigateByUrl('/homepage');}
+
 
 }
 

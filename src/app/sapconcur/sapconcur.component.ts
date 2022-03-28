@@ -25,6 +25,9 @@ export class SAPConcurComponent implements OnInit {
   public dueCondition:number = 0;
   public today: Date = new Date();
   public currentDate: String = (this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear());
+  public minDate: Date = new Date("05/05/1177");
+  public maxDate: Date = new Date("05/05/2077");
+  public value: Date = new Date();
 
 
   calendarVisible = true;

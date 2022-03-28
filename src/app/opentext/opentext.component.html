@@ -26,66 +26,68 @@
 <br>
 <div style="position: relative;padding-left: 132px;" class=".container-lg">
 
-  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="calender()">{{calvalue}}&nbsp; &nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
-  <button type="button" class="btn btn-light" style="border-radius:8px; height:50px;" (click)="search()">
+  <button type="button" class="btn btn-light btn1" (click)="calender()">{{calvalue}}&nbsp; &nbsp;<i class="fa fa-{{icon1}}"></i></button>&nbsp;&nbsp;&nbsp; &nbsp;
+  <button type="button" class="btn btn-light btn2" (click)="search()">
     {{btnVal}}&nbsp; &nbsp;<i class="fa fa-{{icon2}}"></i>
   </button>&nbsp;&nbsp;&nbsp; &nbsp;
-  <button type="button" class="btn btn-light" style="border-radius: 8px; height: 50px;" (click)="filter()">{{showfilter}} &nbsp; &nbsp;<i class="fa fa-{{icon3}}"></i></button>
+  <button type="button" class="btn btn-light btn3" (click)="filter()">{{showfilter}} &nbsp; &nbsp;<i class="fa fa-{{icon3}}"></i></button>
 
-  <button type="button" class="right float-right btn btn-light"
-          style="border-radius: 8px; height: 50px;width:250px;">
+  <button type="button" class="right float-right btn btn-light btn4">
     Show Source Bar &nbsp;
     <i class='fas fa-angle-right'> </i>
   </button>
 
 
-  <h5 *ngIf="showMesearch" style="margin-left: 0px; margin-right: 132px; padding-top:2%">
-    <!--<span class="glyphicon glyphicon-search"></span>-->
-    <div class="form-outline mb-4">
+  <div *ngIf="showMesearch" style="margin-left: -40px; margin-right:0px; padding-top:2%">
+    <div class="form-outline mb-2">
       <input type="search" class="search form-control" placeholder="search..." style="border-radius:10px;">
       <span class="glyphicon glyphicon-search"></span>
     </div>
-  </h5>
+  </div>
 
 
 
-  <h5 *ngIf="showFilter">
-    <div class="btn-top form-outline mb-4">
-      Filter By : <button type="button" class=" btn btn-light" style="font-size:small; border-radius:8px;">
+  <div *ngIf="showFilter">
+    <div class="btn-top form-outline mb-2" >
+      <button type="button" class=" btn btn-light btn5" style="font-size:small; border-radius:8px;">
         Selected Source [1]&nbsp;&nbsp;
         <i class='fas fa-caret-down'></i>
       </button>
 
-      &nbsp;&nbsp;<button type="button" class=" btn btn-light" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
-      <button type="button" class="reset float-right btn btn-light" style="border-radius:8px;"
+      &nbsp;&nbsp;<button type="button" class=" btn btn-light btn6" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
+      <button type="button" class="reset float-right btn btn-light btn7" style="border-radius:8px;"
               (click)="ResetAll()">
         Reset All &nbsp;&nbsp;<i class="fa fa-rotate-left" style='color:red'></i>
       </button>
     </div>
-  </h5>
+  </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid cal">
+
     <div class="row">
-      <h5 *ngIf="ShowMeCalender">
-        <div class="float-left col-sm-6" style="margin-top:20px; position:relative; right:0px;">
-          <div class="container">
+
+      <div class="row">
+        <ng-container *ngIf="ShowMeCalender">
+          <div class="float-left col-sm-6" style="margin-top:-110px; position:relative; right:0px;">
+            <div class="container">
 
 
-            <div class='demo-app-main'>
+              <div class='demo-app-main'>
 
-              <h6 class="currentdate" style="position:relative;top:150px;left:-140px; font-weight:bold">Today is : {{currentDate}} </h6>
-              <full-calendar *ngIf='calendarVisible'
-                             [options]='calendarOptions'></full-calendar>
+                <div class="currentdate" style="position:relative;top:150px;left:-105px; font-weight:bold">Today is : {{currentDate}} </div>
+                <!--  <full-calendar *ngIf='calendarVisible'
+                               [options]='calendarOptions'></full-calendar>-->
+                <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'> </ejs-calendar>
+              </div>
             </div>
+
           </div>
 
+        </ng-container>
+      </div>
 
-
-
-        </div>
-
-      </h5>
     </div>
+
   </div>
 
 </div>
@@ -149,7 +151,7 @@
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
 
-          <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+          <div class="allbtns buttonright btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-light" style="border-radius:8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
             &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -222,7 +224,7 @@
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
         <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <div class="allbtns buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -257,7 +259,7 @@
               </ng-container>
 
 
-              <div class="details">
+              <div class="details1">
                 <ng-container *ngIf="w.due==0 && !w.resolved && w.id==w.id && w.title==w.title">
                   <span class="datecolor3">Due Today</span>
                 </ng-container>
@@ -275,13 +277,13 @@
             </div>
 
 
-            <div class="border-btn-light panel-body" style="position:relative; top:-30px;">
+            <div class="border-btn-light panel-body" style="position:relative; top:13px;">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" style="position: -webkit-sticky; margin-right: 700px; margin-left: 50px; border-radius: 8px;" class="btn btn-light">. . .</button>
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
-        <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
+      <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <div class=" allbtns buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>
@@ -349,7 +351,7 @@
                 <!--             <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Pin Task</button>
         <button type="button" style="position: -webkit-sticky;margin-right: 700px;" class="btn btn-light">Go To Task</button>-->
 
-                <div class=" buttonright btn-group" role="group" aria-label="Basic example">
+                <div class=" allbtns buttonright btn-group" role="group" aria-label="Basic example">
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Pin Task &nbsp;&nbsp;<i class="fa fa-thumb-tack"></i></button>
                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                   <button type="button" class="btn btn-light" style="border-radius: 8px;">Go To Task &nbsp;&nbsp; <i class="fas fa-external-link-alt"></i></button>

@@ -22,8 +22,16 @@ export class AdobeSignComponent implements OnInit {
   icon2 = "eye";
   icon3 = "eye";
 
+  public minDate: Date = new Date("05/05/1177");
+  public maxDate: Date = new Date("05/05/2077");
+  public value: Date = new Date();
+
+
   public today: Date = new Date();
   public currentDate: String = (this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear());
+  public currentday: number = (this.today.getDate());
+  public currentmonth:number = (this.today.getMonth()+1);
+
 
 
   calendarVisible = true;
@@ -40,9 +48,9 @@ export class AdobeSignComponent implements OnInit {
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
-    select: this.handleDateSelect.bind(this),
+  /*  select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
+    eventsSet: this.handleEvents.bind(this)*/
 
   };
   currentEvents: EventApi[] = [];
@@ -54,6 +62,7 @@ export class AdobeSignComponent implements OnInit {
   public count?: Adobe[];
 
   constructor(private ngxService: NgxUiLoaderService, private router: Router, http: HttpClient) {
+  
 
     http.get<Adobe[]>('/api/Adobe').subscribe(result => {
       this.adobe = result;
@@ -100,6 +109,9 @@ export class AdobeSignComponent implements OnInit {
     this.router.navigateByUrl('/datapage');
   }
 
+
+
+
   calender() {
     this.ShowMeCalender = !this.ShowMeCalender;
     if (this.calvalue == "Hide Calender" && this.icon1 == "eye-slash") {
@@ -138,16 +150,16 @@ export class AdobeSignComponent implements OnInit {
     this.router.navigateByUrl('/homepage');
   }
 
-  handleCalendarToggle() {
+ /* handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
   }
 
   handleWeekendsToggle() {
     const { calendarOptions } = this;
     calendarOptions.weekends = !calendarOptions.weekends;
-  }
+  }*/
 
-  handleDateSelect(selectInfo: DateSelectArg) {
+ /* handleDateSelect(selectInfo: DateSelectArg) {
     const title = prompt('Please add your task');
     const calendarApi = selectInfo.view.calendar;
 
@@ -172,7 +184,7 @@ export class AdobeSignComponent implements OnInit {
 
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
-  }
+  }*/
 
 }
 
