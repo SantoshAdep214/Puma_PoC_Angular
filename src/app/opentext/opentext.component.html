@@ -54,7 +54,7 @@
         <i class='fas fa-caret-down'></i>
       </button>
 
-      &nbsp;&nbsp;<button type="button" class=" btn btn-light btn6" style="font-size:small;border-radius:8px;">All Tasks [5] &nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
+      &nbsp;&nbsp;<button type="button" class=" btn btn-light btn6" style="font-size:small;border-radius:8px;" *ngFor="let c of count">All Tasks [{{c.count}}]&nbsp;&nbsp;<i class='fas fa-caret-down'></i></button>
       <button type="button" class="reset float-right btn btn-light btn7" style="border-radius:8px;"
               (click)="ResetAll()">
         Reset All &nbsp;&nbsp;<i class="fa fa-rotate-left" style='color:red'></i>
